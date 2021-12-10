@@ -1,0 +1,33 @@
+{
+  "name": "oracle-web",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "html-webpack-plugin": "^5.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/apart/oracle-web.git"
+  },
+  "author": "Apart",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/apart/oracle-web",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.4.5",
+    "raw-loader": "^4.0.2",
+    "sass": "^1.44.0",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "twig-html-loader": "^0.1.9",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  },
+  "scripts": {
+    "webpack:dev": "webpack-dev-server --mode development --config webpack.development.js",
+    "webpack:build": "webpack build --config webpack.production.js --mode production"
+  }
+}
