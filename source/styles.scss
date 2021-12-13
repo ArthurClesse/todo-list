@@ -1,4 +1,696 @@
+//@import "assets/styles/rfs";
+
+@font-face {
+  font-family: 'relative-italic-pro';
+  src: url('assets/fonts/relative-italic-pro.eot');
+  src: url('assets/fonts/relative-italic-pro.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/relative-italic-pro.woff2') format('woff2'),
+  url('assets/fonts/relative-italic-pro.woff') format('woff'),
+  url('assets/fonts/relative-italic-pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'relative-book-pro';
+  src: url('assets/fonts/relative-book-pro.eot');
+  src: url('assets/fonts/relative-book-pro.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/relative-book-pro.woff2') format('woff2'),
+  url('assets/fonts/relative-book-pro.woff') format('woff'),
+  url('assets/fonts/relative-book-pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'relative-bold-pro';
+  src: url('assets/fonts/relative-bold-pro.eot');
+  src: url('assets/fonts/relative-bold-pro.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/relative-bold-pro.woff2') format('woff2'),
+  url('assets/fonts/relative-bold-pro.woff') format('woff'),
+  url('assets/fonts/relative-bold-pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'relative-medium-pro';
+  src: url('assets/fonts/relative-medium-pro.eot');
+  src: url('assets/fonts/relative-medium-pro.eot?#iefix') format('embedded-opentype'),
+  url('assets/fonts/relative-medium-pro.woff2') format('woff2'),
+  url('assets/fonts/relative-medium-pro.woff') format('woff'),
+  url('assets/fonts/relative-medium-pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+//COLOR
+$white: #fff;
+$black: #000;
+$error-100: #FF6963;
+$info-100: #C577FF;
+$secondary-100: #0080FF;
+$success-100: #00E5A6;
+$warning-100: #FFD600;
+
+//SCREEN
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1600px;
+
+//FONT
+$font-family-sans-serif:      		'relative-book-pro', Arial, sans-serif;
+$font-family-sans-serif-bold:     'relative-bold-pro', Arial, sans-serif;
+
+$font-base: 18px;
+
+
+.video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -100;
+}
+
+.card {
+
+  width: 150px;
+  height: 265px;
+
+  & svg {
+
+
+    width: 150px;
+    height: 265px;
+
+  }
+
+}
+
+.text-green {
+
+  color: $success-100;
+
+}
+
+
 HTML, BODY {
-  background-color: black;
-  color: white;
+  min-height: 100vh;
+  width: 100%;
+  color: $white;
+}
+
+BODY {
+
+  background-color: $black;
+
+}
+P {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.orc-{
+  &header {
+    padding-top: 16px;
+
+    &__logo {
+
+      font-family: $font-family-sans-serif-bold;
+      font-size: 28px;
+
+    }
+    &__by {
+
+      font-family: $font-family-sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+
+    }
+    &__info,
+    &__music {
+
+      height: 40px;
+      width: 40px;
+      background-color: $white;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    &__music-d {
+
+      svg {
+
+        fill: $white;
+
+      }
+
+    }
+
+    &__info-d {
+
+      font-size: 18px;
+      margin-right: 23px;
+
+    }
+  }
+  &hero {
+
+    margin-top: 40px;
+
+    @media only screen and (min-width: $md){
+      margin-top: 145px;
+    }
+
+    &__container {
+
+      max-width: 688px;
+      margin: 0 auto;
+      position: relative;
+
+    }
+
+    &__icon{
+
+      width: 40px;
+      height: 40px;
+
+      @media only screen and (min-width: $lg){
+
+        display: block;
+        margin-left: auto;
+        margin-right: -40px;
+
+      }
+
+    }
+
+    &__icon-2 {
+
+      display: none;
+
+      @media only screen and (min-width: $lg){
+
+        display: block;
+        position: absolute;
+        left: -120px;
+
+      }
+
+    }
+
+    &__title {
+
+      font-family: $font-family-sans-serif;
+      font-weight: 300;
+      font-size: 48px;
+      letter-spacing: 1px;
+      margin-top: 16px;
+
+      @media only screen and (min-width: $md){
+
+        font-size: 60px;
+
+      }
+
+      @media only screen and (min-width: $lg){
+
+        font-size: 81px;
+
+      }
+
+    }
+
+    &__input {
+
+      background-color: transparent;
+      border: 2px solid $white;
+      padding: 16px 32px 16px 32px;
+      border-radius: 32px;
+      color: $white;
+      flex-grow: 1;
+      margin-right: 16px;
+      max-width: 450px;
+      font-size: 18px;
+
+      @media only screen and (min-width: $lg){
+
+        margin-right: 32px;
+
+      }
+
+      &:focus-visible {
+
+        outline: $white;
+
+      }
+
+      &::placeholder {
+
+        color: $white;
+
+      }
+
+    }
+
+    &__predict {
+
+      font-size: $font-base;
+      position: relative;
+
+      @media only screen and (min-width: $lg){
+
+        font-size: 24px;
+
+      }
+
+      &::before {
+
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $white;
+
+      }
+
+    }
+
+  }
+
+  &message {
+
+    &__title {
+
+      font-size: 60px;
+      //@include responsive-font-size(121px);
+
+      @media only screen and (min-width: $md){
+
+        font-size: 80px;
+
+      }
+
+      @media only screen and (min-width: $lg){
+
+        font-size: 100px;
+
+      }
+
+      @media only screen and (min-width: $xl){
+
+        font-size: 120px;
+
+      }
+
+    }
+
+    &__star {
+
+      @media only screen and (min-width: $lg){
+
+        position: absolute;
+        top: 0;
+        left: -40px;
+
+      }
+
+    }
+
+    &__star-2 {
+
+      @media only screen and (min-width: $lg){
+
+        position: absolute;
+        bottom: 0;
+        right: -40px;
+
+      }
+
+    }
+
+  }
+
+  &card {
+
+    &__container-title {
+
+      position: relative;
+
+      &::before,
+      &::after {
+
+        content: '';
+        position: absolute;
+        width: 19px;
+        height: 2px;
+        background-color: $white;
+        top: 20px;
+
+      }
+      &::before {
+
+        left: -31px;
+
+      }
+      &::after {
+
+        right: -31px;
+
+      }
+
+    }
+
+    &__title {
+
+      position: relative;
+      font-size: 24px;
+
+      &::before,
+      &::after {
+
+        content: '';
+        position: absolute;
+        width: 36px;
+        height: 2px;
+        background-color: $white;
+        top: 12px;
+
+      }
+      &::before {
+
+        left: -52px;
+
+      }
+      &::after {
+
+        right: -52px;
+
+      }
+
+    }
+
+    &__text {
+
+      margin: 44px auto 80px auto;
+      max-width: 688px;
+
+      @media only screen and (min-width: $lg){
+
+        margin-top: 220px;
+
+      }
+
+    }
+
+  }
+}
+
+.main-carousel {
+
+  &::after {
+    content: 'flickity';
+    display: none; /* hide :after */
+  }
+
+  @media screen and ( min-width: $lg ) {
+
+    display: flex;
+    justify-content: center;
+    transform: translateX(40px);
+    position: relative;
+    margin-top: 140px;
+
+
+    &::after {
+      content: '';
+    }
+  }
+}
+
+.title-card {
+
+  position: absolute;
+  top: 0;
+
+}
+
+.carousel-cell {
+
+  width: 260px;
+  height: 459px;
+  top: 50%;
+  transform: translateY(-50%) scale(.8);
+  transition: transform .3s ease-out;
+
+  @media only screen and (min-width: $lg){
+
+    width: 187px;
+    height: 331px;
+    transform: none;
+    margin-left: -80px;
+    cursor: pointer;
+
+    &:nth-child(1) {
+
+      transform: translateY(160px) rotate(-45deg);
+      z-index: 100;
+
+      &:hover {
+
+        transform: translateY(120px) translateX(-20px) rotate(-45deg);
+
+      }
+
+    }
+
+    &:nth-child(2) {
+
+      transform: translateY(80px) rotate(-30deg);
+      z-index: 200;
+
+      &:hover {
+
+        transform: translateY(40px) translateX(-20px) rotate(-30deg);
+
+      }
+
+    }
+
+    &:nth-child(3) {
+
+      transform: translateY(40px) rotate(-15deg);
+      z-index: 300;
+
+      &:hover {
+
+        transform: translateY(0) translateX(-20px) rotate(-15deg);
+
+      }
+
+    }
+
+    &:nth-child(4) {
+
+      transform: translateY(8px) rotate(-8deg);
+      z-index: 400;
+
+      &:hover {
+
+        transform: translateY(-40px) translateX(0) rotate(-8deg);
+
+      }
+
+    }
+
+    &:nth-child(5) {
+
+      transform: translateY(8px) rotate(8deg);
+      z-index: 500;
+
+      &:hover {
+
+        transform: translateY(-40px) translateX(0) rotate(8deg);
+
+      }
+
+    }
+
+    &:nth-child(6) {
+
+      transform: translateY(40px) rotate(15deg);
+      z-index: 600;
+
+      &:hover {
+
+        transform: translateY(0) translateX(20px) rotate(15deg);
+
+      }
+
+    }
+
+    &:nth-child(7) {
+
+      transform: translateY(80px) rotate(30deg);
+      z-index: 700;
+
+      &:hover {
+
+        transform: translateY(40px) translateX(20px) rotate(30deg);
+
+      }
+
+    }
+
+    &:nth-child(8) {
+
+      transform: translateY(160px) rotate(45deg);
+      z-index: 800;
+
+      &:hover {
+
+        transform: translateY(120px) translateX(20px) rotate(45deg);
+
+      }
+
+    }
+
+  }
+
+  & img {
+
+    width: 260px;
+    height: 459px;
+
+    @media only screen and (min-width: $lg){
+
+      width: 187px;
+      height: 331px;
+
+    }
+
+  }
+
+  &.is-selected {
+
+    transform: translateY(-50%) scale(1);
+
+  }
+
+}
+
+.carousel-nav {
+
+  &::after {
+    content: 'flickity';
+    display: none; /* hide :after */
+  }
+
+  @media screen and ( min-width: $lg ) {
+
+    &::after {
+      content: '';
+    }
+  }
+
+}
+
+.flickity-page-dots .dot {
+  width: 8px;
+  height: 8px;
+  opacity: 1;
+  background: transparent;
+  border: 1px solid white;
+  margin: 0 2px;
+}
+.flickity-page-dots .dot.is-selected {
+  background: white;
+}
+
+.flickity-viewport {
+
+  &::before,
+  &::after {
+
+    height: 100%;
+    width: 50px;
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @media only screen and (min-width: $lg){
+
+      content: none;
+
+    }
+
+  }
+
+  &::before {
+
+    left: 0;
+    background: linear-gradient(270deg, rgba(0,0,0,0) 0%, #000000 100%);
+    z-index: 100;
+
+  }
+
+  &::after {
+
+    content: 'flickity';
+    display: none; /* hide :after */
+    right: 0;
+    background: linear-gradient(270deg, #000000 0%, rgba(0,0,0,0) 100%);
+    z-index: 100;
+
+  }
+
+}
+
+
+.nav-cell {
+
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .5s .6s ease-out;
+
+  @media only screen and (min-width: $lg){
+
+    transform: translateX(-50%) translateY(30px);
+    opacity: 0;
+
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transition: all .2s ease-out;
+
+    &.show {
+
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+
+    }
+
+
+  }
+
+  &.is-selected {
+
+    transform: translateY(0);
+    opacity: 1;
+
+  }
+
 }

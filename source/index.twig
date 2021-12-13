@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-<title>Oracle</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Oracle by Apart</title>
+
+    <link rel="stylesheet" type="text/css" href="https://clients.apart.lu/apart-styleguide/css/styles.css" media="all">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 </head>
 <body>
 
-{% include '/Partials/Card.twig' %}
+{% include 'partials/video.twig' %}
 
-<img src="assets/IMG_0537.png">
+{% include 'partials/header.twig' %}
 
+<main>
+
+    {% include 'partials/landing.twig' %}
+
+    {% include 'partials/message.twig' %}
+
+    {% include 'partials/carousel-cards.twig' %}
+
+    {% include 'partials/card.twig' %}
+
+
+</main>
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </body>
 </html>
