@@ -32,25 +32,38 @@ document.addEventListener("DOMContentLoaded", function() {
     let cards = document.querySelectorAll('.carousel-cell');
 
     function handleTabletChange(e) {
-        if (e.matches) {
-            cards.forEach(function (card, index) {
-                card.addEventListener("mouseenter", function (e){
+        cards.forEach(function (card, index) {
+            card.addEventListener("mouseenter", function (e){
 
-                    document.getElementById(e.target.dataset.card).classList.add("show");
-                });
-                card.addEventListener("mouseleave", function (e){
-
-                    document.getElementById(e.target.dataset.card).classList.remove("show");
-                });
+                document.getElementById(e.target.dataset.card).classList.add("show");
             });
-        }
+            card.addEventListener("mouseleave", function (e){
+
+                document.getElementById(e.target.dataset.card).classList.remove("show");
+            });
+        });
+    }
+    if (mediaQuery.matches) {
+
+        handleTabletChange(mediaQuery);
     }
 
-    // Register event listener
-    mediaQuery.addListener(handleTabletChange)
 
-    // Initial check
-    handleTabletChange(mediaQuery)
+    mediaQuery.onchange = (e) => {
+
+        if (e.matches) {
+
+            handleTabletChange(mediaQuery);
+
+        } else {
+
+            console.log('test');
+
+        }
+
+    }
+
+
 
     function Lottie(containah, pathu){
 
