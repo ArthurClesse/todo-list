@@ -403,11 +403,11 @@ P {
     &__text {
 
       margin: 44px auto 80px auto;
-      max-width: 688px;
+      max-width: 600px;
 
       @media only screen and (min-width: $lg){
 
-        margin-top: 220px;
+        margin-top: 140px;
 
       }
 
@@ -417,6 +417,8 @@ P {
 }
 
 .main-carousel {
+
+  margin-top: 120px;
 
   &::after {
     content: 'flickity';
@@ -502,12 +504,12 @@ P {
 
     &:nth-child(4) {
 
-      transform: translateY(8px) rotate(-8deg);
+      transform: translateY(16px) rotate(-8deg);
       z-index: 400;
 
       &:hover {
 
-        transform: translateY(-40px) translateX(0) rotate(-8deg);
+        transform: translateY(-24px) translateX(0) rotate(-8deg);
 
       }
 
@@ -515,12 +517,12 @@ P {
 
     &:nth-child(5) {
 
-      transform: translateY(8px) rotate(8deg);
+      transform: translateY(16px) rotate(8deg);
       z-index: 500;
 
       &:hover {
 
-        transform: translateY(-40px) translateX(0) rotate(8deg);
+        transform: translateY(-24px) translateX(0) rotate(8deg);
 
       }
 
@@ -591,15 +593,40 @@ P {
 
 .carousel-nav {
 
-  &::after {
-    content: 'flickity';
-    display: none; /* hide :after */
+}
+
+.nav-cell {
+
+  width: 100%;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .3s ease-out;
+
+  &.show-m,
+  &.show {
+
+    opacity: 1;
+    transform: translateY(0);
+
   }
 
-  @media screen and ( min-width: $lg ) {
+  &.show-m {
+    @media only screen and (min-width: $lg){
+      opacity: 0;
+      transform: translateY(30px);
 
-    &::after {
-      content: '';
+    }
+  }
+
+  &.show {
+    @media only screen and (min-width: $lg){
+
+      opacity: 1;
+      transform: translateY(0);
+
     }
   }
 
@@ -613,6 +640,7 @@ P {
   border: 1px solid white;
   margin: 0 2px;
 }
+
 .flickity-page-dots .dot.is-selected {
   background: white;
 }
@@ -647,49 +675,9 @@ P {
 
   &::after {
 
-    content: 'flickity';
-    display: none; /* hide :after */
     right: 0;
     background: linear-gradient(270deg, #000000 0%, rgba(0,0,0,0) 100%);
     z-index: 100;
-
-  }
-
-}
-
-
-.nav-cell {
-
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all .5s .6s ease-out;
-
-  @media only screen and (min-width: $lg){
-
-    transform: translateX(-50%) translateY(30px);
-    opacity: 0;
-
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transition: all .2s ease-out;
-
-    &.show {
-
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-
-    }
-
-
-  }
-
-  &.is-selected {
-
-    transform: translateY(0);
-    opacity: 1;
 
   }
 
