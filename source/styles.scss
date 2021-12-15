@@ -503,6 +503,19 @@ P {
 
     }
 
+    &.-out {
+      .orc-cardOpen__lottie {
+
+        animation: lottieReverse 0.6s ease-in-out forwards;
+
+      }
+      .orc-cardOpen__card {
+
+        animation: cardReverse 0.7s ease-in-out forwards;
+
+      }
+    }
+
     &__star-1,
     &__star-2 {
 
@@ -544,10 +557,10 @@ P {
       left: 50%;
       top: 0;
       transform: translateX(-50%);
-      border-radius: 50%;
+      clip-path: circle(50%);
       z-index: -300;
-      will-change: transform;
-      animation: lottie 1s ease-in-out;
+      will-change: clip-path;
+      animation: lottie 0.6s ease-in-out;
 
       @media only screen and (min-width: $lg){
 
@@ -566,10 +579,8 @@ P {
       max-width: 1284px;
       max-height: 1284px;
       overflow: hidden;
-      border-radius: 50%;
       margin: 0 auto;
       will-change: transform;
-      animation: lottieScale 0.5s ease-in-out;
 
 
       @media only screen and (min-width: $lg){
@@ -653,7 +664,7 @@ P {
       min-height: 662px;
       border: 2px solid $white;
       border-radius: 32px;
-      animation: cardApparition .8s ease-in-out;
+      animation: cardApparition .7s ease-in-out;
 
       &::after {
 
@@ -1011,6 +1022,18 @@ P {
     //margin-top: 140px;
     margin-left: 70px;
 
+    &.-opened {
+
+      animation: fadeIn .8s ease-out;
+
+    .carousel-cell {
+
+      animation: none !important;
+
+      }
+
+    }
+
 
     &::after {
       content: '';
@@ -1046,7 +1069,8 @@ P {
   //
   //}
 
-  &.-selected {
+  &.-selected,
+  &.-opened {
 
     transition: transform 1s ease-out;
 
@@ -1593,11 +1617,11 @@ P {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(0);
+    transform: translateY(60px);
   }
   to {
     opacity: 1;
-    transform: translateY(30px);
+    transform: translateY(0);
   }
 }
 
@@ -1881,57 +1905,25 @@ P {
 @keyframes lottie {
   0% {
 
-    transform: translateX(-50%) scale(0);
+    clip-path: circle(0);
 
   }
   100% {
 
-    transform: translateX(-50%) scale(1);
+    clip-path: circle(50%);
 
   }
 }
-@media only screen and (min-width: $md){
 
-  @keyframes lottie {
-    0% {
-        transform: translate(0, 0) scale(0);
-
-    }
-    100% {
-
-        transform: translate(0, 0) scale(1);
-
-    }
-  }
-
-}
-
-@media only screen and (min-width: $lg){
-
-  @keyframes lottie {
-    0% {
-
-        transform: translate(-50%, -50%) scale(0);
-
-    }
-    100% {
-
-        transform: translate(-50%, -50%) scale(1);
-
-    }
-  }
-
-
-}
-@keyframes lottieScale {
+@keyframes lottieReverse {
   0% {
 
-    transform: scale(0);
+    clip-path: circle(50%);
 
   }
   100% {
 
-    transform: scale(1);
+    clip-path: circle(0);
 
   }
 }
@@ -1945,6 +1937,18 @@ P {
   100% {
 
     transform: translateY(0);
+
+  }
+}
+@keyframes cardReverse{
+  0% {
+
+    transform: translateY(0);
+
+  }
+  100% {
+
+    transform: translateY(200%);
 
   }
 }
