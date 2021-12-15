@@ -488,7 +488,7 @@ P {
 
     overflow: hidden;
     min-height: 130vw;
-    margin-bottom: 80px;
+    padding-bottom: 80px;
 
     @media only screen and (min-width: $lg){
 
@@ -546,6 +546,8 @@ P {
       transform: translateX(-50%);
       border-radius: 50%;
       z-index: -300;
+      will-change: transform;
+      animation: lottie 1s ease-in-out;
 
       @media only screen and (min-width: $lg){
 
@@ -561,9 +563,13 @@ P {
       position: relative;
       width: 130vw;
       height: 130vw;
+      max-width: 1284px;
+      max-height: 1284px;
       overflow: hidden;
       border-radius: 50%;
       margin: 0 auto;
+      will-change: transform;
+      animation: lottieScale 0.5s ease-in-out;
 
 
       @media only screen and (min-width: $lg){
@@ -647,7 +653,7 @@ P {
       min-height: 662px;
       border: 2px solid $white;
       border-radius: 32px;
-      z-index: -200;
+      animation: cardApparition .8s ease-in-out;
 
       &::after {
 
@@ -784,6 +790,8 @@ P {
     &__content {
 
       padding: 32px;
+      position: relative;
+      z-index: 300;
 
     }
 
@@ -829,7 +837,7 @@ P {
       font-size: 18px;
       position: relative;
 
-      &::after {
+      &::before {
 
         content: '';
         position: absolute;
@@ -841,13 +849,44 @@ P {
 
       }
 
+      &::after {
+
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $success-100;
+        transition: width .3s ease-out;
+
+      }
+
+      &:hover {
+
+        &::after {
+
+          width: 100%;
+
+        }
+
+      }
+
     }
 
   }
 
   &wish {
 
-    margin-bottom: 80px;
+    padding-bottom: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+
+    @media only screen and (min-width: $lg){
+
+      padding-bottom: 120px;
+
+    }
 
     &__subTitle,
     &__link {
@@ -887,11 +926,28 @@ P {
 
     }
 
+    &__containerLink {
+
+      @media only screen and (min-width: $lg){
+
+        margin-left: -72px;
+
+      }
+
+    }
+
     &__link {
       position: relative;
-      margin-right: 30px;
+      margin-right: 32px;
 
-      &::after {
+      @media only screen and (min-width: $lg){
+
+        margin-right: 0;
+        margin-left: 32px;
+
+      }
+
+      &::before {
 
         content: '';
         position: absolute;
@@ -903,6 +959,36 @@ P {
 
       }
 
+      &::after {
+
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $success-100;
+        transition: width .3s ease-out;
+
+      }
+
+      &:hover {
+
+        &::after {
+
+          width: 100%;
+
+        }
+
+      }
+
+    }
+
+    &.-end-exp {
+
+      display: block !important;
+      animation: fadeIn 1s forwards;
+
     }
 
   }
@@ -910,7 +996,7 @@ P {
 
 .main-carousel {
 
-  margin-top: 120px;
+  //margin-top: 120px;
 
   &::after {
     content: 'flickity';
@@ -922,8 +1008,8 @@ P {
     display: flex;
     justify-content: center;
     position: relative;
-    margin-top: 140px;
-    margin-left: 40px;
+    //margin-top: 140px;
+    margin-left: 70px;
 
 
     &::after {
@@ -947,16 +1033,22 @@ P {
   transform: translateY(-50%) scale(.8);
   transition: transform .3s ease-out;
 
-  &::after {
+  //&::after {
+  //
+  //  content: "";
+  //  position: absolute;
+  //  left: 50%;
+  //  bottom: -200%;
+  //  transform: translateX(-50%);
+  //  width: 2px;
+  //  height: 200%;
+  //  background-color: red;
+  //
+  //}
 
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -200%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 200%;
-    background-color: red;
+  &.-selected {
+
+    transition: transform 1s ease-out;
 
   }
 
@@ -1053,11 +1145,19 @@ P {
     transform: none;
     margin-left: -80px;
     cursor: pointer;
+    will-change: transform;
 
     &:nth-child(1) {
 
-      transform: translateY(160px) rotate(-45deg);
+      transform: translateY(170px) translateX(10px) rotate(-45deg);
       z-index: 100;
+      animation: cardChild1 1.6s linear;
+
+      &.-selected {
+
+        transform: translateY(-250%) translateX(10px) rotate(-45deg);
+
+      }
 
       &:hover {
 
@@ -1069,12 +1169,20 @@ P {
 
     &:nth-child(2) {
 
-      transform: translateY(80px) rotate(-30.5deg);
+      transform: translateY(90px) rotate(-31deg);
       z-index: 200;
+      animation: cardChild2 1.4s linear;
+
+      &.-selected {
+
+        transform: translateY(-250%) translateY(90px) rotate(-31deg);
+
+      }
+
 
       &:hover {
 
-        transform: translateY(40px) translateX(-23px) rotate(-30.5deg);
+        transform: translateY(52px) translateX(-23px) rotate(-31deg);
 
       }
 
@@ -1084,6 +1192,13 @@ P {
 
       transform: translateY(40px) rotate(-18deg);
       z-index: 300;
+      animation: cardChild3 1.2s linear;
+
+      &.-selected {
+
+        transform: translateY(-250%) translateY(40px) rotate(-18deg);
+
+      }
 
       &:hover {
 
@@ -1097,6 +1212,13 @@ P {
 
       transform: translateY(16px) rotate(-6deg);
       z-index: 400;
+      animation: cardChild4 1s linear;
+
+      &.-selected {
+
+        transform: translateY(-250%) translateY(16px) rotate(-6deg);
+
+      }
 
       &:hover {
 
@@ -1110,6 +1232,13 @@ P {
 
       transform: translateY(16px) rotate(6deg);
       z-index: 500;
+      animation: cardChild5 0.9s linear;
+
+      &.-selected {
+
+        transform: translateY(-250%) translateY(16px) rotate(6deg);
+
+      }
 
       &:hover {
 
@@ -1123,6 +1252,14 @@ P {
 
       transform: translateY(40px) rotate(18deg);
       z-index: 600;
+      animation: cardChild6 0.8s linear;
+
+      &.-selected {
+
+        transform: translateY(-250%) translateY(40px) rotate(18deg);
+
+      }
+
 
       &:hover {
 
@@ -1134,12 +1271,19 @@ P {
 
     &:nth-child(7) {
 
-      transform: translateY(80px) rotate(30.5deg);
+      transform: translateY(90px) rotate(31deg);
       z-index: 700;
+      animation: cardChild7 0.7s linear;
+
+      &.-selected {
+
+        transform: translateY(-250%) translateY(90px) rotate(31deg);
+
+      }
 
       &:hover {
 
-        transform: translateY(40px) translateX(23px) rotate(30.5deg);
+        transform: translateY(52px) translateX(23px) rotate(31deg);
 
       }
 
@@ -1147,8 +1291,15 @@ P {
 
     &:nth-child(8) {
 
-      transform: translateY(160px) rotate(45deg);
+      transform: translateY(170px) translateX(-10px) rotate(45deg);
       z-index: 800;
+      animation: cardChild8 0.6s linear;
+
+      &.-selected {
+
+        transform: translateY(-250%) translateX(-10px) rotate(45deg);
+
+      }
 
       &:hover {
 
@@ -1339,35 +1490,39 @@ P {
 
 .carousel-nav {
 
+  min-height: 180px;
+
 }
 
 .nav-cell {
 
   width: 100%;
-  position: absolute;
-  top: 70px;
-  left: 0;
+  display: none;
   opacity: 0;
-  transition: opacity .3s ease-out;
+  transform: translateY(60px);
+  max-width: 500px;
+  margin:  0 auto !important;
 
   &.show-m,
   &.show {
 
-    opacity: 1;
-
+    display: block;
+    animation: fadeInCarousel 1s forwards;
   }
 
   &.show-m {
     @media only screen and (min-width: $lg){
       opacity: 0;
-
+      display: none;
+      transform: translateY(60px);
     }
   }
 
   &.show {
     @media only screen and (min-width: $lg){
 
-      opacity: 1;
+      display: block;
+      animation: fadeInCarousel 1s forwards;
     }
   }
 
@@ -1422,4 +1577,374 @@ P {
 
   }
 
+}
+
+@keyframes fadeInCarousel {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+}
+
+@keyframes cardChild1 {
+  0% {
+
+    transform: translateY(250px) translateX(0) rotate(-45deg);
+    opacity: 0;
+
+  }
+  12.5% {
+
+    transform: translateY(170px) translateX(10px) rotate(-45deg);
+    opacity: 1;
+
+  }
+}
+
+@keyframes cardChild2 {
+  0% {
+
+    transform: translateY(250px) translateX(-92px) rotate(-45deg);
+    opacity: 0;
+
+  }
+  12.5% {
+
+    transform: translateY(170px) translateX(-92px) rotate(-45deg);
+    opacity: 1;
+
+  }
+  25% {
+
+    transform: translateY(90px) translateX(0) rotate(-31deg);
+
+  }
+}
+
+@keyframes cardChild3 {
+  0% {
+
+    transform: translateY(250px) translateX(-200px) rotate(-45deg);
+    opacity: 0;
+
+  }
+  12.5% {
+
+    transform: translateY(170px) translateX(-200px) rotate(-45deg);
+    opacity: 1;
+
+  }
+  25% {
+
+    transform: translateY(90px) translateX(-92px) rotate(-31deg);
+
+  }
+  37.5% {
+
+    transform: translateY(40px) translateX(0) rotate(-18deg);
+
+  }
+}
+@keyframes cardChild4 {
+  0% {
+
+    transform: translateY(250px) translateX(-308px) rotate(-45deg);
+    opacity: 0;
+
+  }
+  12.5% {
+
+    transform: translateY(170px) translateX(-308px) rotate(-45deg);
+    opacity: 1;
+
+  }
+  25% {
+
+    transform: translateY(90px) translateX(-200px) rotate(-31deg);
+
+  }
+  37.5% {
+
+    transform: translateY(40px) translateX(-92px) rotate(-18deg);
+
+  }
+
+  50% {
+
+    transform: translateY(16px) translateX(0) rotate(-6deg);
+
+  }
+}
+
+@keyframes cardChild5 {
+  0% {
+
+    transform: translateY(250px) translateX(-416px) rotate(-45deg);
+    opacity: 0;
+
+  }
+  12.5% {
+
+    transform: translateY(170px) translateX(-416px) rotate(-45deg);
+    opacity: 1;
+
+  }
+  25% {
+
+    transform: translateY(90px) translateX(-308px) rotate(-31deg);
+
+  }
+  37.5% {
+
+    transform: translateY(40px) translateX(-200px) rotate(-18deg);
+
+  }
+
+  50% {
+
+    transform: translateY(16px) translateX(-92px) rotate(-6deg);
+
+  }
+
+  62.5% {
+
+    transform: translateY(16px) translateX(0) rotate(6deg);
+
+  }
+}
+
+@keyframes cardChild6 {
+  0% {
+
+    transform: translateY(250px) translateX(-524px) rotate(-45deg);
+    opacity: 0;
+
+  }
+  12.5% {
+
+    transform: translateY(170px) translateX(-524px) rotate(-45deg);
+    opacity: 1;
+
+  }
+  25% {
+
+    transform: translateY(90px) translateX(-416px) rotate(-31deg);
+
+  }
+  37.5% {
+
+    transform: translateY(40px) translateX(-308px) rotate(-18deg);
+
+  }
+
+  50% {
+
+    transform: translateY(16px) translateX(-200px) rotate(-6deg);
+
+  }
+
+  62.5% {
+
+    transform: translateY(16px) translateX(-92px) rotate(6deg);
+
+  }
+
+  75% {
+
+    transform: translateY(40px) translateX(0) rotate(18deg);
+
+  }
+}
+
+@keyframes cardChild7 {
+
+  0% {
+
+    transform: translateY(250px) translateX(-632px) rotate(-45deg);
+    opacity: 0;
+
+  }
+
+  12.5% {
+
+    transform: translateY(170px) translateX(-632px) rotate(-45deg);
+    opacity: 1;
+
+  }
+  25% {
+
+    transform: translateY(90px) translateX(-524px) rotate(-31deg);
+
+  }
+  37.5% {
+
+    transform: translateY(40px) translateX(-416px) rotate(-18deg);
+
+  }
+
+  50% {
+
+    transform: translateY(16px) translateX(-308px) rotate(-6deg);
+
+  }
+
+  62.5% {
+
+    transform: translateY(16px) translateX(-200px) rotate(6deg);
+
+  }
+
+  75% {
+
+    transform: translateY(40px) translateX(-108px) rotate(18deg);
+
+  }
+
+  87.5% {
+
+    transform: translateY(90px) translateX(0) rotate(31deg);
+
+  }
+}
+
+@keyframes cardChild8 {
+  0% {
+
+    transform: translateY(250px) translateX(-740px) rotate(-45deg);
+    opacity: 0;
+
+  }
+
+  12.5% {
+
+    transform: translateY(170px) translateX(-740px) rotate(-45deg);
+    opacity: 1;
+
+  }
+  25% {
+
+    transform: translateY(90px) translateX(-644px) rotate(-31deg);
+
+  }
+  37.5% {
+
+    transform: translateY(40px) translateX(-539px) rotate(-18deg);
+
+  }
+
+  50% {
+
+    transform: translateY(16px) translateX(-428px) rotate(-6deg);
+
+  }
+
+  62.5% {
+
+    transform: translateY(16px) translateX(-320px) rotate(6deg);
+
+  }
+
+  75% {
+
+    transform: translateY(40px) translateX(-216px) rotate(18deg);
+
+  }
+
+  87.5% {
+
+    transform: translateY(90px) translateX(-108px) rotate(31deg);
+
+  }
+
+  100% {
+
+    transform: translateY(170px) translateX(0) rotate(45deg);
+
+  }
+}
+
+@keyframes lottie {
+  0% {
+
+    transform: translateX(-50%) scale(0);
+
+  }
+  100% {
+
+    transform: translateX(-50%) scale(1);
+
+  }
+}
+@media only screen and (min-width: $md){
+
+  @keyframes lottie {
+    0% {
+        transform: translate(0, 0) scale(0);
+
+    }
+    100% {
+
+        transform: translate(0, 0) scale(1);
+
+    }
+  }
+
+}
+
+@media only screen and (min-width: $lg){
+
+  @keyframes lottie {
+    0% {
+
+        transform: translate(-50%, -50%) scale(0);
+
+    }
+    100% {
+
+        transform: translate(-50%, -50%) scale(1);
+
+    }
+  }
+
+
+}
+@keyframes lottieScale {
+  0% {
+
+    transform: scale(0);
+
+  }
+  100% {
+
+    transform: scale(1);
+
+  }
+}
+
+@keyframes cardApparition {
+  0% {
+
+    transform: translateY(200%);
+
+  }
+  100% {
+
+    transform: translateY(0);
+
+  }
 }
