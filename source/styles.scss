@@ -93,6 +93,54 @@ $font-base: 18px;
 
 }
 
+.div-overflow {
+
+  display: inline-block;
+  overflow: hidden;
+
+}
+
+.fadeIn {
+
+  animation: fadeIn .8s ease-in-out forwards;
+
+}
+
+.text-apparition {
+
+  display: block;
+  transform: translateY(100%);
+  animation: textApparition .5s ease-in-out forwards;
+
+
+  &.intro-1 {animation-delay: .1s}
+  &.intro-2 {animation-delay: .2s}
+  &.intro-3 {animation-delay: .3s}
+  &.intro-4 {animation-delay: .4s}
+  &.intro-5 {animation-delay: .5s}
+  &.intro-6 {animation-delay: .7s}
+  &.intro-7 {animation-delay: .8s}
+  &.intro-8 {animation-delay: .9s}
+  &.intro-9 {animation-delay: 1s}
+  &.bullet-1 {animation-delay: .1s}
+  &.bullet-2 {animation-delay: .2s}
+  &.bullet-3 {animation-delay: .3s}
+  &.word-1 {animation-delay: 1s}
+  &.word-2 {animation-delay: 1.1s}
+  &.word-3 {animation-delay: 1.2s}
+  &.word-4 {animation-delay: 1.3s}
+  &.word-5 {animation-delay: 1.4s}
+  &.word-6 {animation-delay: 1.5s}
+  &.word-7 {animation-delay: 1.6s}
+  &.word-8 {animation-delay: 1.7s}
+  &.word-9 {animation-delay: 1.8s}
+  &.word-10 {animation-delay: 1.9s}
+  &.word-11 {animation-delay: 2s}
+  &.word-12 {animation-delay: 2.1s}
+  &.word-13 {animation-delay: 2.2s}
+
+}
+
 .video {
   position: fixed;
   right: 0;
@@ -358,6 +406,8 @@ P {
   }
 
   &message {
+
+    animation: message 6s ease-in-out forwards;
 
     &__title {
 
@@ -1949,6 +1999,34 @@ P {
   100% {
 
     transform: translateY(200%);
+
+  }
+}
+@keyframes textApparition {
+  0% {
+
+    transform: translateY(100%);
+
+  }
+  100% {
+
+    transform: translateY(0);
+
+  }
+}@keyframes message {
+  0% {
+
+    opacity: 1;
+
+  }
+  80% {
+
+    opacity: 1;
+
+  }
+  100% {
+
+    opacity: 0;
 
   }
 }
