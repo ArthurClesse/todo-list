@@ -586,28 +586,64 @@ P {
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: $white;
-      max-width: 730px;
-      padding: 80px;
+      padding: 16px;
+      margin-top: 16px;
+      width: 100%;
+
+      @media only screen and (min-width: $sm){
+
+        margin-top: 0;
+        padding: 32px;
+        max-width: 730px;
+
+      }
+
+      @media only screen and (min-width: $lg){
+
+        padding: 80px;
+
+      }
 
     }
 
     &__close {
 
       position: absolute;
-      top: 32px;
-      right: 32px;
+      top: 16px;
+      right: 16px;
+
+      @media only screen and (min-width: $lg){
+
+        top: 32px;
+        right: 32px;
+
+      }
 
     }
 
     &__text {
 
-    width: 570px;
+      height: 100vh;
+      width: 100%;
+    min-width: 100%;
     max-width: 570px;
     color: $black;
+      padding-top: 50px;
+
+      @media only screen and (min-width: $sm){
+        height: auto;
+      }
+
 
     & p {
 
-      font-size: 24px;
+      font-size: 16px;
+
+      @media only screen and (min-width: $lg){
+
+        font-size: 24px;
+
+      }
 
     }
 
