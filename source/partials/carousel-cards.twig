@@ -58,6 +58,14 @@
         </div>
     </div>
     <div class="main-carousel">
+            {# Au click sur sur une carte, il faut ajouter la class "-selected"
+                sur un element "carousel-cell" et ensuite passer au state suivant c'est à dire
+                "body-card"
+
+                Quand on revient au state "carousel", il faut ajouter la class
+                "-opened" à la place de la class "-selected" à l'élément "carousel-cell"
+                qui vient d'être visualisé.
+            #}
         <div class="carousel-cell -opened" data-card="card-1">
             <img src="../assets/cards/avec_icone/app.svg" alt="">
             <div class="card-opened -success">
