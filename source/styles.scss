@@ -102,16 +102,15 @@ $font-base: 18px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: $success-100;
-  //mix-blend-mode: difference;
+  background-color: $white;
   pointer-events: none;
   z-index: 999;
   transition: transform .2s, width .2s ease-out, height .2s ease-out;
 
   &.close {
 
-    width: 40px;
-    height: 40px;
+    width: 64px;
+    height: 64px;
     background-color: $white;
     border-radius: 50%;
     position: absolute;
@@ -580,7 +579,7 @@ P {
 
       @media only screen and (min-width: $lg){
 
-        margin-top: 180px;
+        margin-top: 200px;
 
       }
 
@@ -1182,7 +1181,30 @@ P {
   &.-selected,
   &.-opened {
 
-    transition: transform 1s ease-out;
+
+    @media only screen and (min-width: $lg){
+
+      transition: transform 1s ease-out;
+
+    }
+
+  }
+
+  &.-selected {
+
+    transform: translateY(-250%) scale(1) !important;
+
+  }
+
+  &.-opened {
+
+    margin-top: 17.5px;
+
+    @media only screen and (min-width: $lg){
+
+      margin-top: 0;
+
+    }
 
   }
 
@@ -1544,15 +1566,28 @@ P {
     }
     .orc-cardOpen__img {
 
-      width: 80px;
-      height: 80px;
+      width: 112px;
+      height: 112px;
       margin-top: 12px;
 
+      @media only screen and (min-width: $lg){
+
+        width: 80px;
+        height: 80px;
+
+      }
       & img {
 
         display: block;
-        width: 80px;
-        height: 80px;
+        width: 112px;
+        height: 112px;
+
+        @media only screen and (min-width: $lg){
+
+          width: 80px;
+          height: 80px;
+
+        }
 
       }
 
@@ -1572,22 +1607,40 @@ P {
 
     .orc-cardOpen__subTitle {
 
-      font-size: 11px;
+      font-size: 16px;
+
+      @media only screen and (min-width: $lg){
+
+        font-size: 11px;
+
+      }
 
     }
     .orc-cardOpen__title {
 
-      font-size: 17px;
+      font-size: 21px;
+
+      @media only screen and (min-width: $lg){
+
+        font-size: 17px;
+
+      }
 
     }
 
     .orc-cardOpen__text {
 
-      font-size: 11px;
+      font-size: 16px;
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: 5;
+      -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
+
+      @media only screen and (min-width: $lg){
+
+        font-size: 11px;
+
+      }
 
     }
 
