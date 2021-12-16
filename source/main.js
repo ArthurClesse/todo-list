@@ -91,3 +91,53 @@ document.addEventListener("DOMContentLoaded", function() {
     Lottie('.lottie-app',"assets/lotties/08_app.json");
 
 });
+
+
+//CUSTOM CURSOR
+$(document).ready(function(){
+    var cursor = $(".cursor");
+
+    $(window).mousemove(function(e) {
+        cursor.css({
+            top: e.clientY - cursor.height() / 2,
+            left: e.clientX - cursor.width() / 2
+        });
+    });
+
+    $(window)
+        .mouseleave(function() {
+            cursor.css({
+                opacity: "0"
+            });
+        })
+        .mouseenter(function() {
+            cursor.css({
+                opacity: "1"
+            });
+        });
+    $(".orc-cardOpen")
+        .mouseleave(function() {
+            cursor.addClass("close");
+        });
+    $(".orc-cardOpen__card")
+        .mouseenter(function() {
+            cursor.removeClass("close");
+        })
+        .mouseleave(function() {
+            cursor.addClass("close");
+        });
+    // $(".link-project")
+    //     .mouseenter(function() {
+    //         project.addClass("test");
+    //     })
+    //     .mouseleave(function() {
+    //         project.removeClass("test");
+    //     });
+    // $(".link-category")
+    //     .mouseenter(function() {
+    //         category.addClass("active");
+    //     })
+    //     .mouseleave(function() {
+    //         category.removeClass("active");
+    //     });
+});
