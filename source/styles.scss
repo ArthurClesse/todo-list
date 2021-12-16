@@ -93,6 +93,17 @@ $font-base: 18px;
 
 }
 
+.modal {
+
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba($black, .6);
+
+}
+
 .cursor {
 
   position: fixed;
@@ -113,9 +124,6 @@ $font-base: 18px;
     height: 64px;
     background-color: $white;
     border-radius: 50%;
-    position: absolute;
-    top: 16px;
-    right: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -489,6 +497,18 @@ P {
 
     &__star {
 
+      &-1 {
+
+        animation: starPop .3s ease-out;
+
+      }
+      &-2 {
+
+        transform-origin: top right;
+        animation: starPop .3s .2s ease-out;
+
+      }
+
       @media only screen and (min-width: $lg){
 
         position: absolute;
@@ -511,6 +531,51 @@ P {
 
     }
 
+  }
+
+  &modal {
+
+    position: relative;
+    height: 100vh;
+    width: 100%;
+
+    &__containerModal {
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $white;
+      max-width: 730px;
+      padding: 80px;
+
+    }
+
+  &__text {
+
+    width: 570px;
+    max-width: 570px;
+    color: $black;
+
+    & p {
+
+      font-size: 24px;
+
+    }
+
+    & svg {
+
+      margin-left: auto;
+      display: block;
+
+    }
+    & svg path {
+
+      fill: $black;
+
+    }
+
+  }
   }
 
   &card {
@@ -2126,7 +2191,9 @@ P {
     transform: translateY(0);
 
   }
-}@keyframes message {
+}
+
+@keyframes message {
   0% {
 
     opacity: 1;
@@ -2140,6 +2207,19 @@ P {
   100% {
 
     opacity: 0;
+
+  }
+}
+
+@keyframes starPop {
+  0% {
+
+    transform: scale(0);
+
+  }
+  100% {
+
+    transform: scale(1);
 
   }
 }

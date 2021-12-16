@@ -57,7 +57,7 @@
             </p>
         </div>
     </div>
-    <div class="main-carousel">
+    <div class="main-carousel -opened">
             {# Au click sur sur une carte, il faut ajouter la class "-selected"
                 sur un element "carousel-cell" et ensuite passer au state suivant c'est à dire
                 "body-card"
@@ -66,7 +66,7 @@
                 "-opened" à la place de la class "-selected" à l'élément "carousel-cell"
                 qui vient d'être visualisé.
             #}
-        <div class="carousel-cell -opened" data-card="card-1">
+        <div class="carousel-cell" data-card="card-1">
             <img src="../assets/cards/avec_icone/app.svg" alt="">
             <div class="card-opened -success">
                 <div class="orc-cardOpen__itemTop -star">
@@ -166,7 +166,7 @@
                 </div>
             </div>
         </div>
-        <div class="carousel-cell -opened" data-card="card-5">
+        <div class="carousel-cell" data-card="card-5">
             <img src="../assets/cards/avec_icone/object.svg" alt="">
             <div class="card-opened -secondary">
                 <div class="orc-cardOpen__itemTop -star">
@@ -271,7 +271,10 @@
         <p>Here are your predictions for 8 thematics. <span class="d-lg-block">Start the experience by clicking on one of your card!</span>
         </p>
     </div>
-    <div class="orc-wish container d-none">
+{#    Pour la fin de l'expérience pour faire apparaitre le texte il faut
+    ajouter la class "-end-exp" à la div "orc-wish" quand toutes les
+      cartes ont la class "-opened"#}
+    <div class="orc-wish container d-none -end-exp">
         <div class="row">
             <div class="col col-lg-10 mx-auto">
                 <div class="orc-wish__subTitle">Nice prediction !</div>
