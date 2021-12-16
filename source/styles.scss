@@ -102,6 +102,12 @@ $font-base: 18px;
   z-index: 1000;
   background-color: rgba($black, .6);
 
+  &.-opened {
+
+    display: block !important;
+
+  }
+
 }
 
 .cursor {
@@ -115,7 +121,7 @@ $font-base: 18px;
   border-radius: 50%;
   background-color: $white;
   pointer-events: none;
-  z-index: 999;
+  z-index: 2000;
   transition: transform .2s, width .2s ease-out, height .2s ease-out;
 
   &.close {
@@ -247,6 +253,12 @@ HTML, BODY {
     cursor: none;
 
   }
+
+  &.modal-open {
+
+    overflow: hidden;
+
+  }
 }
 
 BODY {
@@ -326,7 +338,35 @@ P {
 
     &__music-d {
 
-      svg {
+      &.-off {
+
+        .orc-header__music-d-off{
+
+          display: block;
+
+        }
+
+        .orc-header__music-d-on{
+
+          display: none;
+
+        }
+
+      }
+
+      &-off {
+
+        display: none;
+
+      }
+
+      &-on {
+
+        display: block;
+
+      }
+
+      svg path {
 
         fill: $white;
 
@@ -551,7 +591,15 @@ P {
 
     }
 
-  &__text {
+    &__close {
+
+      position: absolute;
+      top: 32px;
+      right: 32px;
+
+    }
+
+    &__text {
 
     width: 570px;
     max-width: 570px;
@@ -1069,6 +1117,7 @@ P {
 
     @media only screen and (min-width: $lg){
 
+      padding-top: 120px;
       padding-bottom: 120px;
 
     }
