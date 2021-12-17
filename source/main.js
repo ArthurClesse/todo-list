@@ -268,7 +268,7 @@ class App {
 
     initialize() {
 
-        this.shuffleCards();
+        this.prepareCards();
 
         // flickity
         this.initializeFlickity();
@@ -335,7 +335,7 @@ class App {
             if (e.matches) {
                 handleTabletChange(mediaQuery);
             } else {
-                console.log('test');
+                //console.log('test');
             }
         }
 
@@ -346,10 +346,16 @@ class App {
         this.cursor = $(".cursor");
 
         $(window).on('mousemove', (event) => {
+
             this.cursor.css({
                 top: event.clientY - (this.cursor.height() / 4),
                 left: event.clientX - (this.cursor.width() / 4)
             });
+
+            if(this.stage !== Stages.BODY_CARD && this.cursor.hasClass('close')){ // dirty stuff ...
+                this.cursor.removeClass("close");
+            }
+
         });
 
         $(window).on('mouseleave', () => {
@@ -365,7 +371,9 @@ class App {
         });
 
         $(".orc-cardOpen").on('mouseleave', () => {
-            this.cursor.addClass("close");
+            if(!$(".orc-cardOpen").hasClass('-out')){
+                this.cursor.removeClass("close");
+            }
         });
 
         $(".js-modal-content").on('mouseover', () => {
@@ -394,9 +402,15 @@ class App {
 
             let element = $(event.target);
 
-            if (element.parents('.orc-cardOpen__card').length === 0) {
-                this.cursor.addClass("close");
-            } else {
+            if(this.stage === Stages.BODY_CARD){
+
+                if (element.parents('.orc-cardOpen__card').length === 0) {
+                    this.cursor.addClass("close");
+                } else {
+                    this.cursor.removeClass("close");
+                }
+
+            }else{
                 this.cursor.removeClass("close");
             }
 
@@ -448,31 +462,93 @@ class App {
 
     }
 
-    shuffleCards() {
+    preachProphecy(prophecy){
+
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
         let hash = '';
+
+        for (let i = 0; i < prophecy.length; i++) {
+            let prophecyElement = prophecy[i];
+            hash += prophecyElement.toString(2).padStart(2, '0');
+            if(i<prophecy.length-1){
+                hash += '-';
+            }
+        }
+
+        let finalHash = '';
+
+        for (let i = 0; i < hash.length; i++) {
+            finalHash += hash[i] == '1' ? hash[i] : characters.charAt(Math.floor(Math.random() * characters.length))
+        }
+
+        window.history.replaceState('Object', 'Title', '#prophecy' + finalHash);
+
+    }
+
+    shuffleCards() {
+
+        let prophecy = [];
+
+        for (const predictionKey of Object.keys(this.predictions)) {
+            let prediction = this.predictions[predictionKey];
+            prophecy.push(Math.floor(Math.random() * prediction.options.length))
+        }
+
+        return prophecy;
+
+    }
+
+    prepareCards() {
+
+        let prophecy = [];
+
+        if (location.hash.length > 0) {
+
+            let dirtyProphecy = location.hash.replace('#prophecy','');
+
+            let cleansedProphecy = '';
+
+            for (let i = 0; i < dirtyProphecy.length; i++) {
+                if((i+1) % 3 === 0){
+                    cleansedProphecy += '-';
+                }else{
+                    cleansedProphecy += dirtyProphecy[i] == '1' ? dirtyProphecy[i] : '0';
+                }
+            }
+
+            for (const cleansedProphecyElement of cleansedProphecy.split('-')) {
+                prophecy.push(parseInt(cleansedProphecyElement, 2))
+            }
+
+        }
+
+        if(prophecy.length !== 8){
+            prophecy = this.shuffleCards();
+            this.preachProphecy(prophecy);
+        }
+
+        let i =0;
 
         for (const predictionKey of Object.keys(this.predictions)) {
 
             let prediction = this.predictions[predictionKey];
-            let predictionIndex = Math.floor(Math.random() * prediction.options.length);
-            let chosenPrediction = prediction.options[predictionIndex];
+            let chosenPrediction = prediction.options[prophecy[i]];
             let cardElement = $('.js-card-small[data-type="' + predictionKey + '"]');
-            hash += predictionIndex.toString(2).padStart(2,'0');
 
             if (cardElement) {
 
                 cardElement.find('.js-card-subTitle').html(prediction.label);
                 cardElement.find('.js-card-title').html(chosenPrediction.name);
                 cardElement.find('.js-card-text').html(this.impersonate(chosenPrediction.description));
-                cardElement.find('.js-card-image').attr('src','/assets/images'+chosenPrediction.image);
-                cardElement.find('.js-card-link').attr('href',chosenPrediction.link).hide();
+                cardElement.find('.js-card-image').attr('src', '/assets/images' + chosenPrediction.image);
+                cardElement.find('.js-card-link').attr('href', chosenPrediction.link).hide();
 
             }
 
-        }
+            i++;
 
-        console.log('Hash',hash);
+        }
 
     }
 
@@ -507,6 +583,9 @@ class App {
                 // wish message
                 let wishMessage = $('.js-wish');
 
+                $('.js-card-open').removeClass('-out');
+                this.cursor.removeClass("close");
+
                 setTimeout(() => {
 
                     cards.removeClass('-selected').addClass('-opened');
@@ -514,19 +593,23 @@ class App {
                     // how many cards are already open
                     let activeCards = $('.js-card-small.-opened').length;
 
-                    if (activeCards === 8 && !wishMessage.hasClass('-end-exp')) {
+                    if (activeCards === 8) {
 
                         $('.js-prediction-text').html('');
 
-                        // show message
-                        wishMessage.addClass('-end-exp');
+                        // if the wish message is not visible yet, we scroll down to it
+                        if(!wishMessage.hasClass('-end-exp')){
 
-                        // animate scroll to bottom
-                        $([document.documentElement, document.body]).animate({
-                            scrollTop: wishMessage.offset().top
-                        }, 1000);
+                            // show message
+                            wishMessage.addClass('-end-exp');
 
-                    }else{
+                            // animate scroll to bottom
+                            $([document.documentElement, document.body]).animate({
+                                scrollTop: wishMessage.offset().top
+                            }, 1000);
+                        }
+
+                    }else if(activeCards>0){
                         // get the next message and inject username
                         $('.js-prediction-text').html(this.impersonate(this.nextMessages[activeCards-1]));
                     }
@@ -625,10 +708,29 @@ class App {
 
         $('.js-predict').on('click touch', () => {
             this.username = $('.js-predict-username').val();
-            this.moveToStage('message');
+            this.moveToStage(Stages.MESSAGE);
+        });
+
+        $('.js-predict-username').on('keypress', (event) => {
+
+            let inputElement = $('.js-predict-username');
+
+            if(inputElement.val().length > 1){
+                $('.js-predict').removeClass('disabled');
+            }else{
+                $('.js-predict').addClass('disabled');
+            }
+
+            if(event.key === "Enter" && !inputElement.hasClass('disabled')){
+                this.username = inputElement.val();
+                this.moveToStage(Stages.MESSAGE);
+            }
+
         });
 
         $('.js-card-small').on('click touch', (event) => {
+
+            this.playDistinctSound(5);
 
             // check if other cards are selected
             if ($('.js-card-small.-selected').length === 0) {
@@ -683,11 +785,16 @@ class App {
 
                 if (this.stage === Stages.BODY_CARD) {
 
-                    this.moveToStage(Stages.CAROUSEL);
+                    $('.js-card-open').addClass('-out');
 
                     setTimeout(() => {
-                        this.cursor.removeClass('close');
-                    }, 50);
+                        this.moveToStage(Stages.CAROUSEL);
+                        this.cursor.removeClass("close");
+                    },600);
+
+                    setTimeout(() => {
+                        this.cursor.removeClass("close");
+                    },650);
 
                 }
 
@@ -698,6 +805,22 @@ class App {
 
         $(document).on('keydown', (event) => {
 
+            if(event.key === "Escape" && this.stage === Stages.BODY_CARD) {
+
+                // COPY PASTA - BERK, BUT I'M LAZY!!!!!
+
+                $('.js-card-open').addClass('-out');
+
+                setTimeout(() => {
+                    this.moveToStage(Stages.CAROUSEL);
+                    this.cursor.removeClass("close");
+                },600);
+
+                setTimeout(() => {
+                    this.cursor.removeClass("close");
+                },650);
+
+            }
 
         });
 
@@ -705,6 +828,23 @@ class App {
 
         this.musicButton.on('click touch', () => {
             this.toggleSound();
+        });
+
+        // Sharing
+
+        $('.js-share').on('click touch', (event) => {
+
+            navigator.clipboard.writeText(location.origin);
+
+            $('.js-clipboard').addClass('-opened');
+
+            setTimeout(() => {
+                $('.js-clipboard').removeClass('-opened');
+            },2000);
+
+            event.stopPropagation();
+            event.preventDefault();
+
         });
 
     }
