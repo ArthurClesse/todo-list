@@ -720,7 +720,7 @@ class App {
             this.moveToStage(Stages.MESSAGE);
         });
 
-        $('.js-predict-username').on('keypress', (event) => {
+        $('.js-predict-username').on('keyup', (event) => {
 
             let inputElement = $('.js-predict-username');
 
@@ -784,6 +784,8 @@ class App {
         });
 
         $('.js-what-button, .js-modal-close').on('click touch', (event) => {
+            event.stopPropagation();
+            event.preventDefault();
             $('.js-modal').toggleClass('-opened');
             $(document.body).toggleClass('modal-open');
         });
@@ -843,6 +845,9 @@ class App {
 
         $('.js-share').on('click touch', (event) => {
 
+            event.stopPropagation();
+            event.preventDefault();
+
             navigator.clipboard.writeText(location.origin);
 
             $('.js-clipboard').addClass('-opened');
@@ -850,9 +855,6 @@ class App {
             setTimeout(() => {
                 $('.js-clipboard').removeClass('-opened');
             },2000);
-
-            event.stopPropagation();
-            event.preventDefault();
 
         });
 
