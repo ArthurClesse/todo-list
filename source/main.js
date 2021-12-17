@@ -522,7 +522,7 @@ class App {
 
             for (const cleansedProphecyElement of cleansedProphecy.split('-')) {
                 let realProphecy = parseInt(cleansedProphecyElement, 2);
-                if(realProphecy && realProphecy>=0&&realProphecy<4){
+                if(realProphecy>=0 && realProphecy<4){
                     prophecy.push(realProphecy)
                 }else{
                     heathen = true;
