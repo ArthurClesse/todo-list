@@ -502,8 +502,11 @@ class App {
     prepareCards() {
 
         let prophecy = [];
+        let heathen = true;
 
-        if (location.hash.length > 0) {
+        if (location.hash.length === 32) {
+
+            heathen = false;
 
             let dirtyProphecy = location.hash.replace('#prophecy','');
 
@@ -518,12 +521,18 @@ class App {
             }
 
             for (const cleansedProphecyElement of cleansedProphecy.split('-')) {
-                prophecy.push(parseInt(cleansedProphecyElement, 2))
+                let realProphecy = parseInt(cleansedProphecyElement, 2);
+                if(realProphecy && realProphecy>=0&&realProphecy<4){
+                    prophecy.push(realProphecy)
+                }else{
+                    heathen = true;
+                    break;
+                }
             }
 
         }
 
-        if(prophecy.length !== 8){
+        if(heathen){
             prophecy = this.shuffleCards();
             this.preachProphecy(prophecy);
         }
