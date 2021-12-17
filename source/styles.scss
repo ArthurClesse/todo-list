@@ -151,6 +151,11 @@ $font-base: 18px;
     }
 
   }
+  &.dark {
+
+    background-color: $black;
+
+  }
 
 }
 
@@ -164,6 +169,25 @@ $font-base: 18px;
 .fadeIn {
 
   animation: fadeIn .8s ease-in-out forwards;
+
+}
+
+.clipboard {
+
+  display: none;
+  position: fixed;
+  overflow: hidden;
+  bottom: 16px;
+  right: 16px;
+  color: $black;
+  padding: 10px 16px;
+  animation: clipboard .4s ease-out;
+
+    &.-opened {
+
+      display: inline-block;
+
+    }
 
 }
 
@@ -589,6 +613,7 @@ P {
       padding: 16px;
       margin-top: 16px;
       width: 100%;
+      animation: modal .3s ease-out;
 
       @media only screen and (min-width: $sm){
 
@@ -609,8 +634,17 @@ P {
     &__close {
 
       position: absolute;
+      height: 40px;
+      width: 40px;
       top: 16px;
       right: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & svg {
+        margin-left: 0 !important;
+      }
 
       @media only screen and (min-width: $lg){
 
@@ -2359,4 +2393,33 @@ P {
     transform: scale(1);
 
   }
+}
+
+@keyframes modal {
+  0% {
+
+    opacity: 0;
+    transform: translate(-50%, 100px) ;
+
+  }
+  100% {
+
+    opacity: 1;
+    transform: translate(-50%, -50%) ;
+
+  }
+}
+
+@keyframes clipboard {
+  0% {
+
+    opacity: 0;
+
+  }
+  100% {
+
+    opacity: 1;
+
+  }
+
 }
