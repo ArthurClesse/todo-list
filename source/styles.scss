@@ -164,6 +164,12 @@ $font-base: 18px;
     cursor: none;
     transition: width .2s ease-out, height .2s ease-out;
 
+    &::before {
+
+      content: none !important;
+
+    }
+
   }
   &.baguette-small {
 
@@ -176,6 +182,12 @@ $font-base: 18px;
     border-radius: 0;
     cursor: none;
     transition: width .2s ease-out, height .2s ease-out;
+
+    &::before {
+
+      content: none !important;
+
+    }
 
   }
   &.dark {
