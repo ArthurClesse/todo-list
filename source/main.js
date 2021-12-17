@@ -190,6 +190,20 @@ class App {
         $(".js-modal-content").on('mouseleave', () => {
             this.cursor.removeClass("dark");
         });
+        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict").on('mouseover', () => {
+            this.cursor.addClass("baguette-small");
+        });
+
+        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict").on('mouseleave', () => {
+            this.cursor.removeClass("baguette-small");
+        });
+        $(".js-card-small").on('mouseover', () => {
+            this.cursor.addClass("baguette");
+        });
+
+        $(".js-card-small").on('mouseleave', () => {
+            this.cursor.removeClass("baguette");
+        });
 
         $('.js-card-open').on('mouseover', (event) => {
 
