@@ -27,6 +27,8 @@ class App {
         switch (stage) {
             case Stages.MESSAGE:
 
+                createjs.Sound.stop();
+
                 setTimeout(() => {
                     this.audioID = null;
                     this.playDistinctSound(1);
@@ -181,11 +183,7 @@ class App {
             this.cursor.addClass("close");
         });
 
-        $(".js-modal-content").on('mouseleave', () => {
-            this.cursor.removeClass("close");
-        });
-
-        $('.js-card-open, .js-modal-content').on('mouseover', (event) => {
+        $('.js-card-open').on('mouseover', (event) => {
 
             let element = $(event.target);
 
@@ -318,10 +316,12 @@ class App {
 
         $('.js-predict').on('click touch', () => {
             this.username = $('.js-predict-username').val();
-            this.moveToStage('message');
+            this.moveToStage(Stages.MESSAGE);
         });
 
         $('.js-card-small').on('click touch', (event) => {
+
+            this.playDistinctSound(5);
 
             // check if other cards are selected
             if ($('.js-card-small.-selected').length === 0) {
