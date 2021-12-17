@@ -1419,18 +1419,18 @@ P {
 
   }
 
-  &::after {
-
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -200%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 200%;
-    background-color: red;
-
-  }
+  //&::after {
+  //
+  //  content: "";
+  //  position: absolute;
+  //  left: 50%;
+  //  bottom: -200%;
+  //  transform: translateX(-50%);
+  //  width: 2px;
+  //  height: 200%;
+  //  background-color: red;
+  //
+  //}
 
   .star-open {
 
