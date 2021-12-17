@@ -1419,18 +1419,18 @@ P {
 
   }
 
-  //&::after {
-  //
-  //  content: "";
-  //  position: absolute;
-  //  left: 50%;
-  //  bottom: -200%;
-  //  transform: translateX(-50%);
-  //  width: 2px;
-  //  height: 200%;
-  //  background-color: red;
-  //
-  //}
+  &::after {
+
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -200%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 200%;
+    background-color: red;
+
+  }
 
   .star-open {
 
@@ -1589,7 +1589,7 @@ P {
 
       &:hover {
 
-        transform: translateY(120px) translateX(-40px) rotate(-45deg);
+        transform: translateY(130px) translateX(-30px) rotate(-45deg);
 
       }
 
@@ -1748,19 +1748,18 @@ P {
 
       &:nth-child(1) {
 
-        transform: translateY(137px) translateX(-23px) rotate(-45deg);
+        transform: translateY(155px) translateX(-9px) rotate(-45deg);
 
       }
 
       &:nth-child(2) {
 
-        transform: translateY(57px) translateX(-13px) rotate(-30.5deg);
+        transform: translateY(69px) translateX(-13px) rotate(-31deg);
 
       }
 
       &:nth-child(3) {
-
-        transform: translateY(17px) translateX(-6px) rotate(-18deg);
+        transform: translateY(17px) translateX(-9px) rotate(-18deg);
 
       }
 
@@ -1778,19 +1777,19 @@ P {
 
       &:nth-child(6) {
 
-        transform: translateY(17px) translateX(6px) rotate(18deg);
+        transform: translateY(17px) translateX(9px) rotate(18deg);
 
       }
 
       &:nth-child(7) {
 
-        transform: translateY(57px) translateX(13px) rotate(30.5deg);
+        transform: translateY(69px) translateX(13px) rotate(31deg);
 
       }
 
       &:nth-child(8) {
 
-        transform: translateY(137px) translateX(23px) rotate(45deg);
+        transform: translateY(155px) translateX(9px) rotate(45deg);
 
       }
 
