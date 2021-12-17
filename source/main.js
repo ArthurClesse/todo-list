@@ -347,8 +347,8 @@ class App {
 
         $(window).on('mousemove', (event) => {
             this.cursor.css({
-                top: event.clientY - (this.cursor.height() / 2),
-                left: event.clientX - (this.cursor.width() / 2)
+                top: event.clientY - (this.cursor.height() / 4),
+                left: event.clientX - (this.cursor.width() / 4)
             });
         });
 
@@ -366,6 +366,28 @@ class App {
 
         $(".orc-cardOpen").on('mouseleave', () => {
             this.cursor.addClass("close");
+        });
+
+        $(".js-modal-content").on('mouseover', () => {
+            this.cursor.addClass("dark");
+        });
+
+        $(".js-modal-content").on('mouseleave', () => {
+            this.cursor.removeClass("dark");
+        });
+        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict").on('mouseover', () => {
+            this.cursor.addClass("baguette-small");
+        });
+
+        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict").on('mouseleave', () => {
+            this.cursor.removeClass("baguette-small");
+        });
+        $(".js-card-small").on('mouseover', () => {
+            this.cursor.addClass("baguette");
+        });
+
+        $(".js-card-small").on('mouseleave', () => {
+            this.cursor.removeClass("baguette");
         });
 
         $('.js-card-open').on('mouseover', (event) => {
@@ -603,12 +625,10 @@ class App {
 
         $('.js-predict').on('click touch', () => {
             this.username = $('.js-predict-username').val();
-            this.moveToStage(Stages.MESSAGE);
+            this.moveToStage('message');
         });
 
         $('.js-card-small').on('click touch', (event) => {
-
-            this.playDistinctSound(5);
 
             // check if other cards are selected
             if ($('.js-card-small.-selected').length === 0) {

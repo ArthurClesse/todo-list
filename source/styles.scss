@@ -122,6 +122,7 @@ $font-base: 18px;
   background-color: $white;
   pointer-events: none;
   z-index: 2000;
+  transform: translate(0, 0);
   transition: transform .2s, width .2s ease-out, height .2s ease-out;
 
   &.close {
@@ -151,6 +152,37 @@ $font-base: 18px;
     }
 
   }
+  &.baguette {
+
+    width: 83px;
+    height: 87px;
+    background: transparent;
+    background-image: url("assets/icons/icon_wand.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 0;
+    cursor: none;
+    transition: width .2s ease-out, height .2s ease-out;
+
+  }
+  &.baguette-small {
+
+    width: 40px;
+    height: 45px;
+    background: transparent;
+    background-image: url("assets/icons/icon_wand.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 0;
+    cursor: none;
+    transition: width .2s ease-out, height .2s ease-out;
+
+  }
+  &.dark {
+
+    background-color: $black;
+
+  }
 
 }
 
@@ -164,6 +196,25 @@ $font-base: 18px;
 .fadeIn {
 
   animation: fadeIn .8s ease-in-out forwards;
+
+}
+
+.clipboard {
+
+  display: none;
+  position: fixed;
+  overflow: hidden;
+  bottom: 16px;
+  right: 16px;
+  color: $black;
+  padding: 10px 16px;
+  animation: clipboard .4s ease-out;
+
+    &.-opened {
+
+      display: inline-block;
+
+    }
 
 }
 
@@ -250,7 +301,11 @@ HTML, BODY {
 
   @media only screen and (min-width: $lg){
 
-    cursor: none;
+    cursor: none !important;
+
+    a, button {
+      cursor: none !important;
+    }
 
   }
 
@@ -491,6 +546,13 @@ P {
 
       }
 
+      &.disabled {
+
+        opacity: .5;
+        pointer-events: none;
+
+      }
+
       &::before {
 
         content: '';
@@ -499,6 +561,29 @@ P {
         width: 100%;
         height: 2px;
         background-color: $white;
+
+      }
+
+      &::after {
+
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $success-100;
+        transition: width .3s ease-out;
+
+      }
+
+      &:hover {
+
+        &::after {
+
+          width: 100%;
+
+        }
 
       }
 
@@ -536,18 +621,6 @@ P {
     }
 
     &__star {
-
-      &-1 {
-
-        animation: starPop .3s ease-out;
-
-      }
-      &-2 {
-
-        transform-origin: top right;
-        animation: starPop .3s .2s ease-out;
-
-      }
 
       @media only screen and (min-width: $lg){
 
@@ -589,6 +662,7 @@ P {
       padding: 16px;
       margin-top: 16px;
       width: 100%;
+      animation: modal .3s ease-out;
 
       @media only screen and (min-width: $sm){
 
@@ -609,8 +683,17 @@ P {
     &__close {
 
       position: absolute;
+      height: 40px;
+      width: 40px;
       top: 16px;
       right: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & svg {
+        margin-left: 0 !important;
+      }
 
       @media only screen and (min-width: $lg){
 
@@ -697,6 +780,12 @@ P {
       position: relative;
       font-size: 24px;
 
+      @media only screen and (min-width: $lg){
+
+        font-size: 32px;
+
+      }
+
       &::before,
       &::after {
 
@@ -706,6 +795,12 @@ P {
         height: 2px;
         background-color: $white;
         top: 12px;
+
+        @media only screen and (min-width: $lg){
+
+          top: 16px;
+
+        }
 
       }
       &::before {
@@ -1478,7 +1573,6 @@ P {
     height: 331px;
     transform: none;
     margin-left: -80px;
-    cursor: pointer;
     will-change: transform;
 
     &:nth-child(1) {
@@ -1495,7 +1589,7 @@ P {
 
       &:hover {
 
-        transform: translateY(120px) translateX(-40px) rotate(-45deg);
+        transform: translateY(130px) translateX(-30px) rotate(-45deg);
 
       }
 
@@ -1654,19 +1748,18 @@ P {
 
       &:nth-child(1) {
 
-        transform: translateY(137px) translateX(-23px) rotate(-45deg);
+        transform: translateY(155px) translateX(-9px) rotate(-45deg);
 
       }
 
       &:nth-child(2) {
 
-        transform: translateY(57px) translateX(-13px) rotate(-30.5deg);
+        transform: translateY(69px) translateX(-13px) rotate(-31deg);
 
       }
 
       &:nth-child(3) {
-
-        transform: translateY(17px) translateX(-6px) rotate(-18deg);
+        transform: translateY(17px) translateX(-9px) rotate(-18deg);
 
       }
 
@@ -1684,19 +1777,19 @@ P {
 
       &:nth-child(6) {
 
-        transform: translateY(17px) translateX(6px) rotate(18deg);
+        transform: translateY(17px) translateX(9px) rotate(18deg);
 
       }
 
       &:nth-child(7) {
 
-        transform: translateY(57px) translateX(13px) rotate(30.5deg);
+        transform: translateY(69px) translateX(13px) rotate(31deg);
 
       }
 
       &:nth-child(8) {
 
-        transform: translateY(137px) translateX(23px) rotate(45deg);
+        transform: translateY(155px) translateX(9px) rotate(45deg);
 
       }
 
@@ -2359,4 +2452,33 @@ P {
     transform: scale(1);
 
   }
+}
+
+@keyframes modal {
+  0% {
+
+    opacity: 0;
+    transform: translate(-50%, 100px) ;
+
+  }
+  100% {
+
+    opacity: 1;
+    transform: translate(-50%, -50%) ;
+
+  }
+}
+
+@keyframes clipboard {
+  0% {
+
+    opacity: 0;
+
+  }
+  100% {
+
+    opacity: 1;
+
+  }
+
 }
