@@ -1,60 +1,53 @@
 <section class="orc-carouselCard container-lg d-none">
-    <div class="container carousel-nav">
+    <div class="container carousel-nav js-carousel-text">
         <div id="card-1" class="nav-cell text-center mt-16 show-m" data-card="card-1">
             <div class="orc-card__container-title d-inline-block">
-                <h2 class="orc-card__title">A serie 1</h2>
+                <h2 class="orc-card__title">A recipe</h2>
             </div>
-            <p>You missed in 2021 but that you will recommend like crazy in 2022
+            <p>The recipe you'll be craving for in 2022
             </p>
         </div>
         <div id="card-2" class="nav-cell text-center mt-16" data-card="card-2">
             <div class="orc-card__container-title d-inline-block">
-                <h2 class="orc-card__title">A serie 2</h2>
+                <h2 class="orc-card__title">A beverage</h2>
             </div>
-            <p>blablabla blabla bla blabla
-            </p>
+            <p>The beverage you won't miss an occasion to drink in 2022</p>
         </div>
         <div id="card-3" class="nav-cell text-center mt-16" data-card="card-3">
             <div class="orc-card__container-title d-inline-block">
-                <h2 class="orc-card__title">A serie 3</h2>
+                <h2 class="orc-card__title">An object</h2>
             </div>
-            <p>The series you missed in 2021 but that you will recommend like crazy in 2022
-            </p>
+            <p>The object you'll be proud to own in 2022</p>
         </div>
         <div id="card-4" class="nav-cell text-center mt-16" data-card="card-4">
             <div class="orc-card__container-title d-inline-block">
-                <h2 class="orc-card__title">A serie 4</h2>
+                <h2 class="orc-card__title">A series</h2>
             </div>
-            <p>You missed in 2021 but that you will recommend like crazy in 2022
-            </p>
+            <p>The series you missed in 2021 but that you will recommend like crazy in 2022</p>
         </div>
         <div id="card-5" class="nav-cell text-center mt-16" data-card="card-5">
             <div class="orc-card__container-title d-inline-block">
-                <h2 class="orc-card__title">A serie 5</h2>
+                <h2 class="orc-card__title">A mantra</h2>
             </div>
-            <p>You missed in 2021 but that you will recommend like crazy in 2022
-            </p>
+            <p>The mantra that will drive your wisdom in 2022</p>
         </div>
         <div id="card-6" class="nav-cell text-center mt-16"data-card="card-6">
             <div class="orc-card__container-title d-inline-block">
-                <h2 class="orc-card__title">A serie 6</h2>
+                <h2 class="orc-card__title">A song</h2>
             </div>
-            <p>You missed in 2021 but that you will recommend like crazy in 2022
-            </p>
+            <p>The song that will put you in the mood in 2022</p>
         </div>
         <div id="card-7" class="nav-cell text-center mt-16" data-card="card-7">
             <div class="orc-card__container-title d-inline-block">
-                <h2 class="orc-card__title">A serie 7</h2>
+                <h2 class="orc-card__title">A game</h2>
             </div>
-            <p>You missed in 2021 but that you will recommend like crazy in 2022
-            </p>
+            <p>The game that will bring you joy in 2022</p>
         </div>
         <div id="card-8" class="nav-cell text-center mt-16" data-card="card-8">
             <div class="orc-card__container-title d-inline-block">
-                <h2 class="orc-card__title">A serie 8</h2>
+                <h2 class="orc-card__title">An app</h2>
             </div>
-            <p>You missed in 2021 but that you will recommend like crazy in 2022
-            </p>
+            <p>The app you won't stop using in 2022</p>
         </div>
     </div>
 
@@ -62,111 +55,63 @@
 
         {% include 'card.twig' with {
             'id':1,
-            'logo' : '/assets/cards/avec_icone/app.svg',
-            'image' : '/assets/images/App/bravo_studio.jpg',
-            'title' : 'Brand New Cherry Flavor',
-            'subtitle' : 'An app',
-            'description' : "We all have this influential and dangerous power of contagion.
-                            Whether the effects are positive or insidiously negative, our impact can easily be missed or completely out of sight.
-                            This explains why we have so little occasions to notice our careless attitudes and so many reasons to give up our goodwill.
-                            But, never forget that you're contagious so use this power for what you care for.",
-            '' : ''
+            'type' : 'recipe',
+            'icon' : '-snow',
+            'color' : 'secondary'
         } %}
 
         {% include 'card.twig' with {
             'id':2,
-            'logo' : '/assets/cards/avec_icone/beverage.svg',
-            'image' : '/assets/images/App/bravo_studio.jpg',
-            'title' : 'Brand New Cherry Flavor',
-            'subtitle' : 'An app',
-            'description' : "We all have this influential and dangerous power of contagion.
-                            Whether the effects are positive or insidiously negative, our impact can easily be missed or completely out of sight.
-                            This explains why we have so little occasions to notice our careless attitudes and so many reasons to give up our goodwill.
-                            But, never forget that you're contagious so use this power for what you care for.",
-            '' : ''
+            'type' : 'beverage',
+            'icon' : '-star',
+            'color' : 'warning'
         } %}
 
         {% include 'card.twig' with {
             'id':3,
-            'logo' : '/assets/cards/avec_icone/game.svg',
-            'image' : '/assets/images/App/bravo_studio.jpg',
-            'title' : 'Brand New Cherry Flavor',
-            'subtitle' : 'An app',
-            'description' : "We all have this influential and dangerous power of contagion.
-                            Whether the effects are positive or insidiously negative, our impact can easily be missed or completely out of sight.
-                            This explains why we have so little occasions to notice our careless attitudes and so many reasons to give up our goodwill.
-                            But, never forget that you're contagious so use this power for what you care for.",
-            '' : ''
+            'type' : 'object',
+            'icon' : '-snow',
+            'color' : 'info'
         } %}
 
         {% include 'card.twig' with {
             'id':4,
-            'logo' : '/assets/cards/avec_icone/mantra.svg',
-            'image' : '/assets/images/App/bravo_studio.jpg',
-            'title' : 'Brand New Cherry Flavor',
-            'subtitle' : 'An app',
-            'description' : "We all have this influential and dangerous power of contagion.
-                            Whether the effects are positive or insidiously negative, our impact can easily be missed or completely out of sight.
-                            This explains why we have so little occasions to notice our careless attitudes and so many reasons to give up our goodwill.
-                            But, never forget that you're contagious so use this power for what you care for.",
-            '' : ''
+            'type' : 'series',
+            'icon' : '-star',
+            'color' : 'success'
         } %}
 
         {% include 'card.twig' with {
             'id':5,
-            'logo' : '/assets/cards/avec_icone/object.svg',
-            'image' : '/assets/images/App/bravo_studio.jpg',
-            'title' : 'Brand New Cherry Flavor',
-            'subtitle' : 'An app',
-            'description' : "We all have this influential and dangerous power of contagion.
-                            Whether the effects are positive or insidiously negative, our impact can easily be missed or completely out of sight.
-                            This explains why we have so little occasions to notice our careless attitudes and so many reasons to give up our goodwill.
-                            But, never forget that you're contagious so use this power for what you care for.",
-            '' : ''
+            'type' : 'mantra',
+            'icon' : '-snow',
+            'color' : 'error'
         } %}
 
         {% include 'card.twig' with {
             'id':6,
-            'logo' : '/assets/cards/avec_icone/recipe.svg',
-            'image' : '/assets/images/App/bravo_studio.jpg',
-            'title' : 'Brand New Cherry Flavor',
-            'subtitle' : 'An app',
-            'description' : "We all have this influential and dangerous power of contagion.
-                            Whether the effects are positive or insidiously negative, our impact can easily be missed or completely out of sight.
-                            This explains why we have so little occasions to notice our careless attitudes and so many reasons to give up our goodwill.
-                            But, never forget that you're contagious so use this power for what you care for.",
-            '' : ''
+            'type' : 'song',
+            'icon' : '-star',
+            'color' : 'info'
         } %}
 
         {% include 'card.twig' with {
             'id':7,
-            'logo' : '/assets/cards/avec_icone/series.svg',
-            'image' : '/assets/images/App/bravo_studio.jpg',
-            'title' : 'Brand New Cherry Flavor',
-            'subtitle' : 'An app',
-            'description' : "We all have this influential and dangerous power of contagion.
-                            Whether the effects are positive or insidiously negative, our impact can easily be missed or completely out of sight.
-                            This explains why we have so little occasions to notice our careless attitudes and so many reasons to give up our goodwill.
-                            But, never forget that you're contagious so use this power for what you care for.",
-            '' : ''
+            'type' : 'game',
+            'icon' : '-snow',
+            'color' : 'success'
         } %}
 
         {% include 'card.twig' with {
             'id':8,
-            'logo' : '/assets/cards/avec_icone/song.svg',
-            'image' : '/assets/images/App/bravo_studio.jpg',
-            'title' : 'Brand New Cherry Flavor',
-            'subtitle' : 'An app',
-            'description' : "We all have this influential and dangerous power of contagion.
-                            Whether the effects are positive or insidiously negative, our impact can easily be missed or completely out of sight.
-                            This explains why we have so little occasions to notice our careless attitudes and so many reasons to give up our goodwill.
-                            But, never forget that you're contagious so use this power for what you care for.",
-            '' : ''
+            'type' : 'app',
+            'icon' : '-star',
+            'color' : 'warning'
         } %}
 
     </div>
     <div class="orc-card__text text-center">
-        <p>Here are your predictions for 8 thematics. <span class="d-lg-block">Start the experience by clicking on one of your card!</span>
+        <p class="js-prediction-text">Here are your predictions for 8 thematics. <span class="d-lg-block">Start the experience by clicking on one of your card!</span>
         </p>
     </div>
 {#    Pour la fin de l'expérience pour faire apparaitre le texte il faut
