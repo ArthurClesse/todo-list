@@ -1147,14 +1147,15 @@ P {
 
   &wish {
 
-    padding-bottom: 80px;
+    padding-top: 150px;
+    padding-bottom: 150px;
     opacity: 0;
     transform: translateY(30px);
 
     @media only screen and (min-width: $lg){
 
-      padding-top: 120px;
-      padding-bottom: 120px;
+      padding-top: 220px;
+      padding-bottom: 300px;
 
     }
 
@@ -1311,9 +1312,17 @@ P {
 
   width: 260px;
   height: 459px;
-  top: 50%;
-  transform: translateY(-50%) scale(.8);
+  top: 0;
+  transform: translateY(0) scale(.8);
   transition: transform .3s ease-out;
+  position: absolute;
+  left: 0;
+
+  @media only screen and (min-width: $lg){
+
+    position: relative;
+
+  }
 
   //&::after {
   //
@@ -1327,6 +1336,25 @@ P {
   //  background-color: red;
   //
   //}
+
+  .star-open {
+
+    display: none;
+  }
+
+  &.is-selected {
+
+    .star-open {
+
+      display: block;
+      position: absolute;
+      top: -16px;
+      left: -40px;
+      transform: scale(0);
+      animation: scaleStar .3s ease-out forwards;
+    }
+
+  }
 
   &.-selected,
   &.-opened {
@@ -1817,13 +1845,21 @@ P {
 
   }
 
-  &.is-selected {
+  .flickity-enabled &{
 
-    transform: translateY(-50%) scale(1);
+    top: 50%;
+    transform: translateY(-50%) scale(.8);
+
+    &.is-selected {
+
+      transform: translateY(-50%) scale(1);
+
+    }
 
   }
 
 }
+
 
 .carousel-nav {
 
@@ -1884,11 +1920,17 @@ P {
   &::after {
 
     height: 100%;
-    width: 50px;
+    width: 30px;
     content: '';
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+
+    @media only screen and (min-width: $sm){
+
+      width: 40px;
+
+    }
 
     @media only screen and (min-width: $lg){
 
@@ -1936,6 +1978,16 @@ P {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes scaleStar {
+  0%{
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+
 }
 
 @keyframes cardChild1 {
