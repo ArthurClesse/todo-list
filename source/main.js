@@ -126,18 +126,4 @@ $(document).ready(function(){
         .mouseleave(function() {
             cursor.addClass("close");
         });
-    // $(".link-project")
-    //     .mouseenter(function() {
-    //         project.addClass("test");
-    //     })
-    //     .mouseleave(function() {
-    //         project.removeClass("test");
-    //     });
-    // $(".link-category")
-    //     .mouseenter(function() {
-    //         category.addClass("active");
-    //     })
-    //     .mouseleave(function() {
-    //         category.removeClass("active");
-    //     });
 });
