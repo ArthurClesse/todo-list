@@ -18,7 +18,6 @@ class App {
 
     moveToStage(stage) {
 
-        console.log('Move to stage', stage);
         this.stage = stage;
 
         // reset class
@@ -29,6 +28,7 @@ class App {
             case Stages.MESSAGE:
 
                 setTimeout(() => {
+                    this.audioID = null;
                     this.playDistinctSound(1);
                 },100);
 
@@ -42,21 +42,38 @@ class App {
 
                 // TODO : randomize values and build URL
 
+                // return cards back
+                let cards = $('.js-card-small.-selected');
+                // wish message
                 let wishMessage = $('.js-wish');
 
-                if ($('.js-card-small.-opened').length === 8 && !wishMessage.hasClass('-end-exp')) {
+                setTimeout(() => {
 
-                    // show message
-                    wishMessage.addClass('-end-exp');
+                    cards.removeClass('-selected').addClass('-opened');
 
-                    // deploy scroll a little
-                    setTimeout(() => {
-                        window.scrollTo(0, wishMessage.offset().top);
-                    }, 50);
+                    if ($('.js-card-small.-opened').length === 8 && !wishMessage.hasClass('-end-exp')) {
 
-                }
+                        // show message
+                        wishMessage.addClass('-end-exp');
+
+                        // animate scroll to bottom
+                        $([document.documentElement, document.body]).animate({
+                            scrollTop: wishMessage.offset().top
+                        }, 1000);
+
+                    }
+
+                },150);
+
 
                 break;
+
+            case Stages.BODY_CARD:
+
+
+
+                break
+
         }
 
     }
@@ -164,7 +181,11 @@ class App {
             this.cursor.addClass("close");
         });
 
-        $('.js-card-open').on('mouseover', (event) => {
+        $(".js-modal-content").on('mouseleave', () => {
+            this.cursor.removeClass("close");
+        });
+
+        $('.js-card-open, .js-modal-content').on('mouseover', (event) => {
 
             let element = $(event.target);
 
@@ -191,38 +212,42 @@ class App {
 
     initializeSound(){
 
-        let autostart = true;
         this.playing = false;
-        this.preload = null;
+        this.audioID = 3;
+        this.audioEnabled = true;
 
         this.musicButton = $('.js-music');
 
-        if (!createjs.Sound.initializeDefaultPlugins()) {
-            alert('Error loading SoundJS');
-        }
+        if (createjs.Sound.initializeDefaultPlugins()) {
 
-        if (createjs.BrowserDetect.isIOS || createjs.BrowserDetect.isAndroid || createjs.BrowserDetect.isBlackberry) {
-            // sound can't be autorun
-           // autostart = false;
-        }
-
-        // register sounds
-
-        let assetsPath = "/assets/audio/";
-        let sounds = [
-            {src: "harpdescend_bw.25570.mp3", id: 1},
-            {src: "magical_fantasy.mp3", id: 2},
-            {src: "the_magic.mp3", id: 3},
-        ];
-
-        createjs.Sound.registerSounds(sounds, assetsPath);
-        createjs.Sound.volume = 0.2;
-
-        createjs.Sound.on("fileload", (file) => {
-            if(file.id === 3 && autostart){
-                this.playSound(3);
+            if (createjs.BrowserDetect.isIOS || createjs.BrowserDetect.isAndroid || createjs.BrowserDetect.isBlackberry) {
+                // sound can't be autorun
+                this.audioEnabled = false;
             }
-        });
+
+            // register sounds
+
+            let assetsPath = "/assets/audio/";
+            let sounds = [
+                {src: "harpdescend_bw.25570.mp3", id: 1},
+                {src: "magical_fantasy.mp3", id: 2},
+                {src: "the_magic.mp3", id: 3},
+                {src: "mixkit-ending-wind-swoosh-1482.mp3", id: 4},
+                {src: "mixkit-cool-interface-click-tone-2568.mp3", id: 5},
+            ];
+
+            createjs.Sound.registerSounds(sounds, assetsPath);
+            createjs.Sound.volume = 0.2;
+
+            createjs.Sound.on("fileload", (file) => {
+                if(file.id === 3 && this.audioEnabled){
+                    this.playSound(3);
+                }
+            });
+
+        }else{
+            this.audioEnabled = false1;
+        }
 
     }
 
@@ -230,12 +255,13 @@ class App {
 
         this.audioID = id;
 
+        if(!this.audioEnabled){
+            return
+        }
+
         this.playing = true;
 
-        console.log('playSound', id);
-
-        //Play the sound: play (src, interrupt, delay, offset, loop, volume, pan)
-        let instance = createjs.Sound.createInstance(id, );
+        let instance = createjs.Sound.createInstance(id);
 
         instance.on("succeeded", () => {
             this.musicButton.removeClass('-off');
@@ -245,19 +271,25 @@ class App {
     }
 
     playDistinctSound(id, volume = 0.5) {
-        createjs.Sound.stop();
+
+        if(!this.audioEnabled){
+            return
+        }
+
         createjs.Sound.play(id,{loop: 0, volume: volume});
+        this.musicButton.removeClass('-off');
     }
 
     toggleSound(){
 
         this.musicButton.toggleClass('-off');
+        this.audioEnabled = !this.audioEnabled;
 
         if(this.playing){
             createjs.Sound.stop();
             this.playing = false;
-        }else{
-            createjs.Sound.play(this.audioID);
+        }else if(this.audioID){
+            this.playSound(this.audioID);
         }
 
     }
@@ -297,14 +329,14 @@ class App {
                 let element = $(event.currentTarget);
                 element.addClass('-selected');
 
+                this.playDistinctSound(4);
+
                 // copy information
                 setTimeout(() => {
                     this.moveToStage(Stages.BODY_CARD)
 
                     setTimeout(() => {
                         $('.js-main-carousel').addClass('-opened');
-                        element.removeClass('-selected');
-                        element.addClass('-opened');
                     }, 250);
 
                 }, 400);
@@ -313,15 +345,28 @@ class App {
 
         });
 
+        $('.js-what-button, .js-modal-close').on('click touch', (event) => {
+            $('.js-modal').toggleClass('-opened');
+            $(document.body).toggleClass('modal-open');
+        });
+
         $(document).on('click touch', () => {
 
-            if (this.stage === Stages.BODY_CARD && this.cursor.hasClass('close')) {
+            if(this.cursor.hasClass('close')){
 
-                this.moveToStage(Stages.CAROUSEL);
+                if($('.js-modal').hasClass('-opened')){
 
-                setTimeout(() => {
-                    this.cursor.removeClass('close');
-                }, 50);
+
+
+                }else if (this.stage === Stages.BODY_CARD) {
+
+                    this.moveToStage(Stages.CAROUSEL);
+
+                    setTimeout(() => {
+                        this.cursor.removeClass('close');
+                    }, 50);
+
+                }
 
             }
 
