@@ -569,6 +569,9 @@ class App {
         this.body.attr('class', '');
         this.body.addClass(stage);
 
+        this.carousel = document.querySelector('.main-carousel');
+        this.flkty = new Flickity( this.carousel );
+
         switch (stage) {
             case Stages.MESSAGE:
 
@@ -582,7 +585,7 @@ class App {
                 setTimeout(() => {
                     this.moveToStage(Stages.CAROUSEL);
                     this.playSound(2);
-                    flkty.resize();
+                    this.flkty.resize();
                 }, 6200);
 
                 break;
@@ -642,7 +645,7 @@ class App {
         this.lottie('.lottie-recipe', "/assets/lotties/01_recipe.json");
         this.lottie('.lottie-beverage', "/assets/lotties/02_beverage.json");
         this.lottie('.lottie-object', "/assets/lotties/03_object.json");
-        this.lottie('.lottie-serie', "/assets/lotties/04_serie.json");
+        this.lottie('.lottie-series', "/assets/lotties/04_serie.json");
         this.lottie('.lottie-mantra', "/assets/lotties/05_mantra.json");
         this.lottie('.lottie-song', "/assets/lotties/06_song.json");
         this.lottie('.lottie-game', "/assets/lotties/07_game.json");

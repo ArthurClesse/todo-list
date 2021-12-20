@@ -541,10 +541,17 @@ P {
       margin-right: 16px;
       max-width: 450px;
       font-size: 18px;
-      cursor: none;
+
+      @media only screen and (min-width: $lg){
+
+        margin-right: 32px;
+        cursor: none;
+
+      }
 
       &:focus-visible {
 
+        outline: $white;
         background-color: rgba($white, .2);
 
         &::placeholder {
@@ -552,18 +559,6 @@ P {
           color: transparent;
 
         }
-
-      }
-
-      @media only screen and (min-width: $lg){
-
-        margin-right: 32px;
-
-      }
-
-      &:focus-visible {
-
-        outline: $white;
 
       }
 
@@ -904,6 +899,11 @@ P {
         animation: lottieReverse 0.6s ease-in-out forwards;
 
       }
+      .orc-cardOpen__containerLottie {
+
+        animation: lottieReverse 0.6s ease-in-out forwards;
+
+      }
       .orc-cardOpen__card {
 
         animation: cardReverse 0.7s ease-in-out forwards;
@@ -952,10 +952,9 @@ P {
       left: 50%;
       top: 30%;
       transform: translate(-50%, -50%);
-      clip-path: circle(50%);
       z-index: -300;
-      will-change: clip-path;
-      animation: lottie 0.6s ease-in-out;
+      border-radius: 50%;
+      animation: lottie 0.6s forwards;
 
     }
 
@@ -968,7 +967,8 @@ P {
       max-height: 1564px;
       overflow: hidden;
       margin: 0 auto;
-      will-change: transform;
+      border-radius: 50%;
+      animation: lottie 0.6s forwards;
 
 
       @media only screen and (min-width: $lg){
@@ -1454,23 +1454,26 @@ P {
   width: 260px;
   height: 459px;
   transform: translateY(0) scale(.8);
-  transition: transform .3s ease-out;
-  margin-right: 30px;
+  transition: all .3s ease-out;
+  top: 0;
   flex-shrink: 0;
-  //top: 50%;
-
-  //&:nth-child(1) {transform: translateX(0) translateY(-50%) scale(.8) !important}
-  //&:nth-child(2) {transform: translateX(111.54%) translateY(-50%) scale(.8) !important}
-  //&:nth-child(3) {transform: translateX(223.08%) translateY(-50%) scale(.8) !important}
-  //&:nth-child(4) {transform: translateX(334.62%) translateY(-50%) scale(.8) !important}
-  //&:nth-child(5) {transform: translateX(446.15%) translateY(-50%) scale(.8) !important}
-  //&:nth-child(6) {transform: translateX(557.69%) translateY(-50%) scale(.8) !important}
-  //&:nth-child(7) {transform: translateX(669.23%) translateY(-50%) scale(.8) !important}
-  //&:nth-child(8) {transform: translateX(-111.54%) translateY(-50%) scale(.8) !important}
 
   @media only screen and (min-width: $lg){
 
     position: relative;
+
+  }
+
+  & img {
+
+    transform: scale(.8);
+    transition: transform .3s ease-out;
+
+    @media only screen and (min-width: $lg){
+
+      transform: scale(1);
+
+    }
 
   }
 
@@ -1494,6 +1497,18 @@ P {
 
   &.is-selected {
 
+    & img {
+
+      transform: scale(1);
+
+    }
+
+    .card-opened {
+
+      transform: scale(1);
+
+    }
+
     .star-open {
 
       display: block;
@@ -1502,6 +1517,7 @@ P {
       left: -40px;
       transform: scale(0);
       animation: scaleStar .3s ease-out forwards;
+      z-index: 200;
     }
 
   }
@@ -1512,7 +1528,7 @@ P {
 
     @media only screen and (min-width: $lg){
 
-      transition: transform 1s ease-out;
+      transition: transform .6s ease-out;
 
     }
 
@@ -1520,17 +1536,11 @@ P {
 
   &.-selected {
 
-    transform: translateY(-250%) translateX(0) scale(1) !important;
-
-  }
-
-  &.-opened {
-
-    margin-top: 17.5px;
+    top: -250%;
 
     @media only screen and (min-width: $lg){
 
-      margin-top: 0;
+      transform: translateY(-250%) translateX(0) scale(1) !important;
 
     }
 
@@ -1539,6 +1549,23 @@ P {
   .card-opened {
 
     display: none;
+    width: 260px;
+    height: 439px;
+    background-image: url("assets/cards/card_front.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: scale(.8);
+    margin-top: 20px;
+
+    @media only screen and (min-width: $lg){
+
+      width: auto;
+      height: auto;
+      background: none;
+      transform: scale(1);
+      margin-top: 0;
+    }
+
 
     &.-info {
 
@@ -1796,11 +1823,12 @@ P {
   }
 
   &.-opened {
-    background-image: url("assets/cards/card_front.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
 
     @media only screen and (min-width: $lg){
+
+      background-image: url("assets/cards/card_front.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
 
       &:nth-child(1) {
 
@@ -1879,9 +1907,9 @@ P {
 
     .orc-cardOpen__itemTop {
 
-      height: 35px;
-      width: 35px;
-      top: -17.5px;
+      height: 40px;
+      width: 40px;
+      top: -20px;
       border-width: 1px;
 
       & svg {
@@ -1946,6 +1974,10 @@ P {
     .orc-cardOpen__title {
 
       font-size: 21px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
 
       @media only screen and (min-width: $lg){
 
