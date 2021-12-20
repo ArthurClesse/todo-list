@@ -337,7 +337,7 @@ BODY {
     .orc-hero,
     .video {
 
-      display: block !important;
+      display: flex !important;
 
     }
   }
@@ -353,15 +353,30 @@ BODY {
   &.carousel {
 
     .orc-carouselCard {
+
       display: block !important;
+
+      @media only screen and (min-width: $lg){
+
+        display: flex !important;
+
+      }
 
     }
   }
 
   &.body-card {
 
+    @media only screen and (min-width: $lg) {
+
+      max-height: 100vh;
+      overflow: hidden;
+
+    }
+
     .orc-cardOpen {
-      display: block !important;
+
+      display: flex !important;
 
     }
   }
@@ -450,11 +465,11 @@ P {
   }
   &hero {
 
+    min-height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 40px;
-
-    @media only screen and (min-width: $md){
-      margin-top: 145px;
-    }
 
     &__container {
 
@@ -526,6 +541,19 @@ P {
       margin-right: 16px;
       max-width: 450px;
       font-size: 18px;
+      cursor: none;
+
+      &:focus-visible {
+
+        background-color: rgba($white, .2);
+
+        &::placeholder {
+
+          color: transparent;
+
+        }
+
+      }
 
       @media only screen and (min-width: $lg){
 
@@ -757,6 +785,20 @@ P {
   }
   }
 
+  &carouselCard {
+
+
+    @media only screen and (min-width: $lg){
+
+      min-height: calc(100vh - 60px);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+  }
+
   &card {
 
     &__container-title {
@@ -846,19 +888,13 @@ P {
   &cardOpen {
 
     overflow: hidden;
-    min-height: 130vw;
-    padding-bottom: 80px;
+    min-height: calc(100vh - 60px);
+    justify-content: center;
+    align-items: center;
 
     @media only screen and (min-width: $lg){
 
-      min-height: 85vw;
       overflow: visible;
-
-    }
-
-    @media only screen and (min-width: $xl){
-
-      min-height: 75vw;
 
     }
 
@@ -914,19 +950,12 @@ P {
 
       position: absolute;
       left: 50%;
-      top: 0;
-      transform: translateX(-50%);
+      top: 30%;
+      transform: translate(-50%, -50%);
       clip-path: circle(50%);
       z-index: -300;
       will-change: clip-path;
       animation: lottie 0.6s ease-in-out;
-
-      @media only screen and (min-width: $lg){
-
-        top: 50%;
-        transform: translate(-50%, -50%);
-
-      }
 
     }
 
@@ -935,8 +964,8 @@ P {
       position: relative;
       width: 130vw;
       height: 130vw;
-      max-width: 1284px;
-      max-height: 1284px;
+      max-width: 1564px;
+      max-height: 1564px;
       overflow: hidden;
       margin: 0 auto;
       will-change: transform;
@@ -951,8 +980,8 @@ P {
 
       @media only screen and (min-width: $xl){
 
-        width: 75vw;
-        height: 75vw;
+        width: 95vw;
+        height: 95vw;
 
       }
 
@@ -965,7 +994,7 @@ P {
       background-color: $white;
       border-radius: 50%;
       position: absolute;
-      top: 16px;
+      top: 10vh;
       right: 32px;
       display: flex;
       justify-content: center;
@@ -982,7 +1011,6 @@ P {
     &__containerCard {
 
       position: relative;
-      padding-top: 104px;
 
     }
 
@@ -1025,11 +1053,17 @@ P {
       background-color: $black;
       width: 100%;
       max-width: 392px;
-      margin: 0 auto;
       min-height: 662px;
       border: 2px solid $white;
       border-radius: 32px;
       animation: cardApparition .7s ease-in-out;
+      margin: 40px auto 0 auto;
+
+      @media only screen and (min-width: $md){
+
+        margin-top: 0;
+
+      }
 
       &::after {
 
@@ -1419,11 +1453,20 @@ P {
 
   width: 260px;
   height: 459px;
-  top: 0;
   transform: translateY(0) scale(.8);
   transition: transform .3s ease-out;
-  position: absolute;
-  left: 0;
+  margin-right: 30px;
+  flex-shrink: 0;
+  //top: 50%;
+
+  //&:nth-child(1) {transform: translateX(0) translateY(-50%) scale(.8) !important}
+  //&:nth-child(2) {transform: translateX(111.54%) translateY(-50%) scale(.8) !important}
+  //&:nth-child(3) {transform: translateX(223.08%) translateY(-50%) scale(.8) !important}
+  //&:nth-child(4) {transform: translateX(334.62%) translateY(-50%) scale(.8) !important}
+  //&:nth-child(5) {transform: translateX(446.15%) translateY(-50%) scale(.8) !important}
+  //&:nth-child(6) {transform: translateX(557.69%) translateY(-50%) scale(.8) !important}
+  //&:nth-child(7) {transform: translateX(669.23%) translateY(-50%) scale(.8) !important}
+  //&:nth-child(8) {transform: translateX(-111.54%) translateY(-50%) scale(.8) !important}
 
   @media only screen and (min-width: $lg){
 
@@ -1477,7 +1520,7 @@ P {
 
   &.-selected {
 
-    transform: translateY(-250%) scale(1) !important;
+    transform: translateY(-250%) translateX(0) scale(1) !important;
 
   }
 
@@ -1586,6 +1629,7 @@ P {
     transform: none;
     margin-left: -80px;
     will-change: transform;
+    margin-right: 0;
 
     &:nth-child(1) {
 
@@ -1941,23 +1985,10 @@ P {
     width: 260px;
     height: 459px;
 
-    @media only screen and (min-width: $lg){
+    @media only screen and (min-width: $lg) {
 
       width: 187px;
       height: 331px;
-
-    }
-
-  }
-
-  .flickity-enabled &{
-
-    top: 50%;
-    transform: translateY(-50%) scale(.8);
-
-    &.is-selected {
-
-      transform: translateY(-50%) scale(1);
 
     }
 

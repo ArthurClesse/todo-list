@@ -582,6 +582,7 @@ class App {
                 setTimeout(() => {
                     this.moveToStage(Stages.CAROUSEL);
                     this.playSound(2);
+                    flkty.resize();
                 }, 6200);
 
                 break;
