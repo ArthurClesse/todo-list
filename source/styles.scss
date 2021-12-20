@@ -345,7 +345,7 @@ BODY {
   &.message {
 
     .orc-message {
-      display: block !important;
+      display: flex !important;
 
     }
   }
@@ -420,6 +420,17 @@ P {
 
     &__music-d {
 
+      svg path {
+
+        fill: $white;
+
+      }
+
+    }
+
+    &__music,
+    &__music-d {
+
       &.-off {
 
         .orc-header__music-d-off{
@@ -445,12 +456,6 @@ P {
       &-on {
 
         display: block;
-
-      }
-
-      svg path {
-
-        fill: $white;
 
       }
 
@@ -628,6 +633,9 @@ P {
 
   &message {
 
+    min-height: calc(100vh - 60px);
+    justify-content: center;
+    align-items: center;
     animation: message 6s ease-in-out forwards;
 
     &__title {
@@ -1287,18 +1295,13 @@ P {
   }
 
   &wish {
-
-    padding-top: 150px;
-    padding-bottom: 150px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     transform: translateY(30px);
 
-    @media only screen and (min-width: $lg){
-
-      padding-top: 220px;
-      padding-bottom: 300px;
-
-    }
 
     &__subTitle,
     &__link {
@@ -1398,7 +1401,7 @@ P {
 
     &.-end-exp {
 
-      display: block !important;
+      display: flex !important;
       animation: fadeIn 1s forwards;
 
     }
