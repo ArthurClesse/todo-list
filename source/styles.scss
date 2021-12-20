@@ -60,6 +60,7 @@ $md: 768px;
 $lg: 992px;
 $xl: 1200px;
 $xxl: 1600px;
+$height: 1080px;
 
 //FONT
 $font-family-sans-serif:      		'relative-book-pro', Arial, sans-serif;
@@ -1112,6 +1113,13 @@ P {
 
       }
 
+      @media (min-height: $height) and (min-width: $xxl) {
+
+        max-width: 500px;
+        min-height: 800px;
+
+      }
+
       &::after {
 
         content: "";
@@ -1123,6 +1131,13 @@ P {
         left: 50%;
         transform: translateX(-50%);
         z-index: -100;
+
+        @media (min-height: $height) and (min-width: $xxl) {
+
+          width: 120px;
+
+        }
+
       }
 
       &.-info {
@@ -1222,6 +1237,14 @@ P {
       align-items: center;
       outline: 5px solid transparent;
 
+      @media (min-height: $height) and (min-width: $xxl) {
+
+        width: 80px;
+        height: 80px;
+        top: -40px;
+
+      }
+
       &.-star {
 
         .orc-cardOpen__snow {
@@ -1268,6 +1291,13 @@ P {
 
       }
 
+      @media (min-height: $height) and (min-width: $xxl) {
+
+        width: 180px;
+        height: 180px;
+
+      }
+
     }
 
     &__subTitle {
@@ -1280,6 +1310,12 @@ P {
 
       }
 
+      @media (min-height: $height) and (min-width: $xxl) {
+
+        font-size: 23px;
+
+      }
+
     }
 
     &__title {
@@ -1289,6 +1325,11 @@ P {
       @media only screen and (min-width: $xl){
 
         font-size: 32px;
+
+      }
+      @media (min-height: $height) and (min-width: $xxl) {
+
+        font-size: 36px;
 
       }
 
@@ -1304,6 +1345,11 @@ P {
         font-size: 21px;
 
       }
+      @media (min-height: $height) and (min-width: $xxl) {
+
+        font-size: 23px;
+
+      }
 
     }
 
@@ -1315,6 +1361,11 @@ P {
       @media only screen and (min-width: $lg){
 
         font-size: 23px;
+
+      }
+      @media (min-height: $height) and (min-width: $xxl) {
+
+        font-size: 26px;
 
       }
 
