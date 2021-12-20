@@ -488,6 +488,12 @@ P {
     align-items: center;
     margin-top: 40px;
 
+    @media only screen and (min-width: $lg){
+
+      margin-top: 0;
+
+    }
+
     &__container {
 
       max-width: 688px;

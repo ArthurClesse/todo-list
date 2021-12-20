@@ -383,11 +383,11 @@ class App {
         $(".js-modal-content").on('mouseleave', () => {
             this.cursor.removeClass("dark");
         });
-        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict").on('mouseover', () => {
+        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict, .js-share").on('mouseover', () => {
             this.cursor.addClass("baguette-small");
         });
 
-        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict").on('mouseleave', () => {
+        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict, .js-share").on('mouseleave', () => {
             this.cursor.removeClass("baguette-small");
         });
         $(".js-card-small").on('mouseover', () => {
