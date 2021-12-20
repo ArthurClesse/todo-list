@@ -334,6 +334,13 @@ BODY {
 
   &.landing {
 
+    .orc-header__logo,
+    .orc-header__by,
+    .orc-header__info-d,
+    .orc-header__music-d {
+      mix-blend-mode: normal;
+    }
+
     .orc-hero,
     .video {
 
@@ -395,6 +402,7 @@ P {
 
       font-family: $font-family-sans-serif-bold;
       font-size: 28px;
+      mix-blend-mode: difference;
 
     }
     &__by {
@@ -402,6 +410,7 @@ P {
       font-family: $font-family-sans-serif;
       font-weight: 400;
       font-size: 14px;
+      mix-blend-mode: difference;
 
     }
     &__info,
@@ -419,6 +428,8 @@ P {
     }
 
     &__music-d {
+
+      mix-blend-mode: difference;
 
       svg path {
 
@@ -465,6 +476,7 @@ P {
 
       font-size: 18px;
       margin-right: 23px;
+      mix-blend-mode: difference;
 
     }
   }
@@ -551,6 +563,19 @@ P {
 
         margin-right: 32px;
         cursor: none;
+
+      }
+
+      &:focus {
+
+        outline: none;
+        background-color: rgba($white, .2);
+
+        &::placeholder {
+
+          color: transparent;
+
+        }
 
       }
 
@@ -751,9 +776,9 @@ P {
 
       height: 100vh;
       width: 100%;
-    min-width: 100%;
-    max-width: 570px;
-    color: $black;
+      min-width: 100%;
+      max-width: 570px;
+      color: $black;
       padding-top: 50px;
 
       @media only screen and (min-width: $sm){
@@ -1002,11 +1027,12 @@ P {
       background-color: $white;
       border-radius: 50%;
       position: absolute;
-      top: 10vh;
-      right: 32px;
+      top: 20px;
+      right: 16px;
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 400;
 
       @media only screen and (min-width: $lg){
 
@@ -1070,6 +1096,13 @@ P {
       @media only screen and (min-width: $md){
 
         margin-top: 0;
+
+      }
+
+      @media only screen and (min-width: $lg){
+
+        max-width: 450px;
+        min-height: 730px;
 
       }
 
@@ -1235,11 +1268,23 @@ P {
 
       font-size: 16px;
 
+      @media only screen and (min-width: $lg){
+
+        font-size: 21px;
+
+      }
+
     }
 
     &__title {
 
       font-size: 24px;
+
+      @media only screen and (min-width: $lg){
+
+        font-size: 32px;
+
+      }
 
     }
 
@@ -1248,12 +1293,24 @@ P {
       margin-top: 8px;
       font-size: 16px;
 
+      @media only screen and (min-width: $lg){
+
+        font-size: 21px;
+
+      }
+
     }
 
     &__link {
 
       font-size: 18px;
       position: relative;
+
+      @media only screen and (min-width: $lg){
+
+        font-size: 23px;
+
+      }
 
       &::before {
 
@@ -1411,8 +1468,6 @@ P {
 
 .main-carousel {
 
-  //margin-top: 120px;
-
   &::after {
     content: 'flickity';
     display: none; /* hide :after */
@@ -1423,7 +1478,6 @@ P {
     display: flex;
     justify-content: center;
     position: relative;
-    //margin-top: 140px;
     margin-left: 70px;
 
     &.-opened {
@@ -1457,13 +1511,14 @@ P {
   width: 260px;
   height: 459px;
   transform: translateY(0) scale(.8);
-  transition: all .3s ease-out;
+  transition: top .3s ease-out;
   top: 0;
   flex-shrink: 0;
 
   @media only screen and (min-width: $lg){
 
     position: relative;
+    transition: all .3s ease-out;
 
   }
 
@@ -1516,7 +1571,7 @@ P {
 
       display: block;
       position: absolute;
-      top: -16px;
+      top: -15px;
       left: -40px;
       transform: scale(0);
       animation: scaleStar .3s ease-out forwards;
@@ -2034,7 +2089,13 @@ P {
 
 .carousel-nav {
 
-  min-height: 180px;
+  min-height: 120px;
+
+  @media only screen and (min-width: $lg){
+
+    min-height: 180px;
+
+  }
 
 }
 
@@ -2491,7 +2552,7 @@ P {
 @keyframes textApparition {
   0% {
 
-    transform: translateY(100%);
+    transform: translateY(-100%);
 
   }
   100% {
