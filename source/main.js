@@ -619,7 +619,7 @@ class App {
                             // animate scroll to bottom
                             $([document.documentElement, document.body]).animate({
                                 scrollTop: wishMessage.offset().top
-                            }, 1000);
+                            }, 200);
                         }
 
                     }else if(activeCards>0){
@@ -627,7 +627,7 @@ class App {
                         $('.js-prediction-text').html(this.impersonate(this.nextMessages[activeCards-1]));
                     }
 
-                },150);
+                },100);
 
                 break;
 

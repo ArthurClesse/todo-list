@@ -111,6 +111,79 @@ $font-base: 18px;
 
 }
 
+.apart-link {
+
+  position: relative;
+
+  &::before {
+
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $black;
+
+  }
+
+  &::after {
+
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $success-100;
+    transition: width .3s ease-out;
+
+  }
+
+  &:hover {
+
+    &::after {
+
+      width: 100%;
+
+    }
+
+  }
+
+}
+
+.js-what-button {
+
+  position: relative;
+
+  &::before {
+
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: $success-100;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity .3s ease-out;
+
+  }
+
+  &:hover {
+
+    &::before {
+
+      opacity: 1;
+
+    }
+
+  }
+
+}
+
 .cursor {
 
   position: fixed;
@@ -256,13 +329,13 @@ $font-base: 18px;
   &.word-4 {animation-delay: .40s}
   &.word-5 {animation-delay: .50s}
   &.word-6 {animation-delay: .80s}
-  &.word-7 {animation-delay: 1.2s}
-  &.word-8 {animation-delay: 1.4s}
-  &.word-9 {animation-delay: 1.8s}
-  &.word-10 {animation-delay: 2.4s}
-  &.word-11 {animation-delay: 2.6s}
-  &.word-12 {animation-delay: 3.2s}
-  &.word-13 {animation-delay: 3.6s}
+  &.word-7 {animation-delay: 1s}
+  &.word-8 {animation-delay: 1.2s}
+  &.word-9 {animation-delay: 1.4s}
+  &.word-10 {animation-delay: 1.6s}
+  &.word-11 {animation-delay: 1.8s}
+  &.word-12 {animation-delay: 2s}
+  &.word-13 {animation-delay: 2.2s}
 
 }
 
@@ -497,7 +570,7 @@ P {
 
     &__container {
 
-      max-width: 688px;
+      max-width: 741px;
       margin: 0 auto;
       position: relative;
 
@@ -850,6 +923,12 @@ P {
         background-color: $white;
         top: 20px;
 
+        @media only screen and (min-width: $lg){
+
+          top: 32px;
+
+        }
+
       }
       &::before {
 
@@ -871,7 +950,7 @@ P {
 
       @media only screen and (min-width: $lg){
 
-        font-size: 32px;
+        font-size: 40px;
 
       }
 
@@ -887,7 +966,7 @@ P {
 
         @media only screen and (min-width: $lg){
 
-          top: 16px;
+          top: 24px;
 
         }
 
@@ -905,14 +984,32 @@ P {
 
     }
 
+    &__textHover {
+
+      font-size: 21px;
+
+    }
+
     &__text {
 
       margin: 44px auto 80px auto;
       max-width: 600px;
 
+      & p {
+
+        animation: fadeIn .3s ease-out;
+
+      }
+
       @media only screen and (min-width: $lg){
 
         margin-top: 200px;
+
+        & p {
+
+          font-size: 21px;
+
+        }
 
       }
 
@@ -923,13 +1020,16 @@ P {
   &cardOpen {
 
     overflow: hidden;
-    min-height: calc(100vh - 60px);
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
+    margin-top: -60px;
 
     @media only screen and (min-width: $lg){
 
       overflow: visible;
+      min-height: calc(100vh - 60px);
+      margin-top: 0;
 
     }
 
@@ -1034,7 +1134,7 @@ P {
       background-color: $white;
       border-radius: 50%;
       position: absolute;
-      top: 20px;
+      top: 100px;
       right: 16px;
       display: flex;
       justify-content: center;
@@ -1098,11 +1198,12 @@ P {
       border: 2px solid $white;
       border-radius: 32px;
       animation: cardApparition .7s ease-in-out;
-      margin: 40px auto 0 auto;
+      margin: 120px auto 40px auto;
 
       @media only screen and (min-width: $md){
 
         margin-top: 0;
+        margin-bottom: 0;
 
       }
 
@@ -1568,7 +1669,7 @@ P {
   width: 260px;
   height: 459px;
   transform: translateY(0) scale(.8);
-  transition: top .3s ease-out;
+  transition: top .6s ease-out;
   top: 0;
   flex-shrink: 0;
 
@@ -1656,6 +1757,17 @@ P {
     @media only screen and (min-width: $lg){
 
       transform: translateY(-250%) translateX(0) scale(1) !important;
+
+    }
+
+  }
+
+  &.-opened {
+
+
+    .star-open {
+
+      display: none;
 
     }
 
@@ -2146,7 +2258,7 @@ P {
 
 .carousel-nav {
 
-  min-height: 120px;
+  min-height: 140px;
 
   @media only screen and (min-width: $lg){
 
@@ -2254,8 +2366,23 @@ P {
   }
   to {
     opacity: 1;
-    transform: translateY(30px);
+    transform: translateY(16px);
   }
+}
+
+@media only screen and (min-width: $lg){
+
+  @keyframes fadeInCarousel {
+    from {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
 }
 
 @keyframes fadeIn {
