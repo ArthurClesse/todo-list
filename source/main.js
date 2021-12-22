@@ -685,7 +685,7 @@ class App {
                 $('.js-cardOpen-image').attr('src', element.find('.js-card-image').attr('src'));
 
                 let link = element.find('.js-card-link').attr('href');
-                if (link) {
+                if (link && link !== "#") {
                     $('.js-cardOpen-link').attr('href', link).show();
                 } else {
                     $('.js-cardOpen-link').hide();
@@ -704,12 +704,9 @@ class App {
         });
 
         $('.js-what-button, .js-modal-close').on('click touch', (event) => {
-
             event.stopPropagation();
             event.preventDefault();
             // get the next message and inject username
-            // let activeCards = $('.js-card-small.-opened').length + $('.js-card-small.-selected').length;
-            // $('.js-prediction-text').html(this.impersonate(this.nextMessages[activeCards - 1]));
             $('.js-modal').toggleClass('-opened');
             $(document.body).toggleClass('modal-open');
         });
