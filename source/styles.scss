@@ -730,7 +730,7 @@ P {
         left: 0;
         width: 0;
         height: 2px;
-        background-color: $success-100;
+        background-color: $black;
         transition: width .3s ease-out;
 
       }
@@ -760,6 +760,25 @@ P {
 
       font-size: 60px;
       //@include responsive-font-size(121px);
+
+      &::selection {
+
+        color: $black;
+        background-color: $success-100;
+
+      }
+
+      & span  span{
+
+        &::selection {
+
+          color: $black;
+          background-color: $success-100;
+
+        }
+
+
+      }
 
       @media only screen and (min-width: $md){
 
@@ -1268,6 +1287,16 @@ P {
 
         }
 
+        .orc-cardOpen__link {
+
+          &::after {
+
+            background-color: $info-100;
+
+          }
+
+        }
+
       }
 
       &.-error {
@@ -1281,6 +1310,16 @@ P {
         .orc-cardOpen__subTitle {
 
           color: $error-100;
+
+        }
+
+        .orc-cardOpen__link {
+
+          &::after {
+
+            background-color: $error-100;
+
+          }
 
         }
 
@@ -1300,6 +1339,16 @@ P {
 
         }
 
+        .orc-cardOpen__link {
+
+          &::after {
+
+            background-color: $success-100;
+
+          }
+
+        }
+
       }
 
       &.-secondary {
@@ -1316,6 +1365,16 @@ P {
 
         }
 
+        .orc-cardOpen__link {
+
+          &::after {
+
+            background-color: $secondary-100;
+
+          }
+
+        }
+
       }
 
       &.-warning {
@@ -1329,6 +1388,16 @@ P {
         .orc-cardOpen__subTitle {
 
           color: $warning-100;
+
+        }
+
+        .orc-cardOpen__link {
+
+          &::after {
+
+            background-color: $warning-100;
+
+          }
 
         }
 
