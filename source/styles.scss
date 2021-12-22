@@ -195,7 +195,7 @@ $font-base: 18px;
   border-radius: 50%;
   background-color: $white;
   pointer-events: none;
-  z-index: 2000;
+  z-index: 2147483631999;
   transform: translate(0, 0);
   transition: transform .2s, width .2s ease-out, height .2s ease-out;
 
