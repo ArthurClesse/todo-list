@@ -267,7 +267,6 @@ class App {
     }
 
     initialize() {
-
         // flickity
         this.initializeFlickity();
 
@@ -276,15 +275,12 @@ class App {
 
         // SoundJS
         this.initializeSound();
-
         this.attachEvents();
 
         // TODO : check if we have a valid URL and move to the right stage with the saved cards
-
     }
 
     initializeFlickity() {
-
         let carousel = document.querySelector('.main-carousel');
         let buttonGroup = document.querySelector('.carousel-nav');
         let selectedNavButton = buttonGroup.querySelector('.show-m');
@@ -298,10 +294,10 @@ class App {
             watchCSS: true
         });
 
-        flkty.on('select', function () {
+        flkty.on('select', () => {
             let card = flkty.selectedElement.dataset.card;
             let navButton = buttonGroup.querySelector(`[data-card="${card}"]`);
-            if (navButton != selectedNavButton) {
+            if (navButton !== selectedNavButton) {
                 selectedNavButton.classList.remove('show-m');
                 navButton.classList.add('show-m');
                 selectedNavButton = navButton;
@@ -309,19 +305,12 @@ class App {
         });
 
         const mediaQuery = window.matchMedia('(min-width: 992px)');
-
         let cards = document.querySelectorAll('.carousel-cell');
 
         function handleTabletChange(e) {
-            cards.forEach(function (card, index) {
-                card.addEventListener("mouseenter", function (e) {
-
-                    document.getElementById(e.target.dataset.card).classList.add("show");
-                });
-                card.addEventListener("mouseleave", function (e) {
-
-                    document.getElementById(e.target.dataset.card).classList.remove("show");
-                });
+            cards.forEach((card, index) => {
+                card.addEventListener("mouseenter", (e) => document.getElementById(e.target.dataset.card).classList.add("show"));
+                card.addEventListener("mouseleave", (e) => document.getElementById(e.target.dataset.card).classList.remove("show"));
             });
         }
 
@@ -332,92 +321,65 @@ class App {
         mediaQuery.onchange = (e) => {
             if (e.matches) {
                 handleTabletChange(mediaQuery);
-            } else {
-                //console.log('test');
             }
         }
-
     }
 
     initializeCursor() {
-
         this.cursor = $(".cursor");
 
         $(window).on('mousemove', (event) => {
-
             this.cursor.css({
                 top: event.clientY - (this.cursor.height() / 4),
                 left: event.clientX - (this.cursor.width() / 4)
             });
-
             if (this.stage !== Stages.BODY_CARD && this.cursor.hasClass('close')) { // dirty stuff ...
                 this.cursor.removeClass("close");
             }
-
         });
 
-        $(window).on('mouseleave', () => {
-            this.cursor.css({
-                opacity: "0"
-            });
-        });
+        $(window).on('mouseleave', () => this.cursor.css({
+            opacity: "0"
+        }));
 
-        $(window).on('mouseenter', () => {
-            this.cursor.css({
-                opacity: "1"
-            });
-        });
+        $(window).on('mouseenter', () => this.cursor.css({
+            opacity: "1"
+        }));
 
-        $(".orc-cardOpen").on('mouseleave', () => {
-            if (!$(".orc-cardOpen").hasClass('-out')) {
+        let cardOpen = $(".orc-cardOpen");
+        cardOpen.on('mouseleave', () => {
+            if (!cardOpen.hasClass('-out')) {
                 this.cursor.removeClass("close");
             }
         });
 
-        $(".js-modal-content").on('mouseover', () => {
-            this.cursor.addClass("dark");
-        });
+        let modalContent = $(".js-modal-content");
+        modalContent.on('mouseover', () => this.cursor.addClass("dark"));
+        modalContent.on('mouseleave', () => this.cursor.removeClass("dark"));
 
-        $(".js-modal-content").on('mouseleave', () => {
-            this.cursor.removeClass("dark");
-        });
-        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict, .js-share").on('mouseover', () => {
-            this.cursor.addClass("baguette-small");
-        });
+        let baguetteThing = $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict, .js-share");
+        baguetteThing.on('mouseover', () => this.cursor.addClass("baguette-small"));
+        baguetteThing.on('mouseleave', () => this.cursor.removeClass("baguette-small"));
 
-        $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict, .js-share").on('mouseleave', () => {
-            this.cursor.removeClass("baguette-small");
-        });
-        $(".js-card-small").on('mouseover', () => {
-            this.cursor.addClass("baguette");
-        });
-
-        $(".js-card-small").on('mouseleave', () => {
-            this.cursor.removeClass("baguette");
-        });
+        let smallCard = $(".js-card-small");
+        smallCard.on('mouseover', () => this.cursor.addClass("baguette"));
+        smallCard.on('mouseleave', () => this.cursor.removeClass("baguette"));
 
         $('.js-card-open').on('mouseover', (event) => {
-
             let element = $(event.target);
-
             if (this.stage === Stages.BODY_CARD) {
-
                 if (element.parents('.orc-cardOpen__card').length === 0) {
                     this.cursor.addClass("close");
                 } else {
                     this.cursor.removeClass("close");
                 }
-
             } else {
                 this.cursor.removeClass("close");
             }
-
         });
-
     }
 
     initializeSound() {
-
         this.playing = false;
         this.audioID = 3;
         this.muted = false;
@@ -427,7 +389,6 @@ class App {
         this.musicButton = $('.js-music');
 
         if (createjs.Sound.initializeDefaultPlugins()) {
-
             if (createjs.BrowserDetect.isIOS || createjs.BrowserDetect.isAndroid || createjs.BrowserDetect.isBlackberry) {
                 // sound can't be autorun
                 autorun = false;
@@ -451,17 +412,14 @@ class App {
                     this.playSound(3);
                 }
             });
-
         } else {
             this.muted = true;
             this.audioID = null;
             this.musicButton.addClass('-off');
         }
-
     }
 
     preachProphecy(prophecy) {
-
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
         let hash = '';
@@ -481,11 +439,9 @@ class App {
         }
 
         window.history.replaceState('Object', 'Title', '#prophecy' + finalHash);
-
     }
 
     shuffleCards() {
-
         let prophecy = [];
 
         for (const predictionKey of Object.keys(this.predictions)) {
@@ -494,16 +450,13 @@ class App {
         }
 
         return prophecy;
-
     }
 
     prepareCards() {
-
         let prophecy = [];
         let heathen = true;
 
         if (location.hash.length === 32) {
-
             heathen = false;
 
             let dirtyProphecy = location.hash.replace('#prophecy', '');
@@ -527,7 +480,6 @@ class App {
                     break;
                 }
             }
-
         }
 
         if (heathen) {
@@ -536,31 +488,24 @@ class App {
         }
 
         let i = 0;
-
         for (const predictionKey of Object.keys(this.predictions)) {
-
             let prediction = this.predictions[predictionKey];
             let chosenPrediction = prediction.options[prophecy[i]];
             let cardElement = $('.js-card-small[data-type="' + predictionKey + '"]');
 
             if (cardElement) {
-
                 cardElement.find('.js-card-subTitle').html(prediction.label);
                 cardElement.find('.js-card-title').html(chosenPrediction.name);
                 cardElement.find('.js-card-text').html(this.impersonate(chosenPrediction.description));
                 cardElement.find('.js-card-image').attr('src', '/assets/images' + chosenPrediction.image);
                 cardElement.find('.js-card-link').attr('href', chosenPrediction.link).hide();
-
             }
 
             i++;
-
         }
-
     }
 
     moveToStage(stage) {
-
         this.stage = stage;
 
         // reset class
@@ -572,7 +517,6 @@ class App {
 
         switch (stage) {
             case Stages.MESSAGE:
-
                 this.prepareCards();
                 createjs.Sound.stop();
 
@@ -588,8 +532,8 @@ class App {
                 }, 6200);
 
                 break;
-            case Stages.CAROUSEL:
 
+            case Stages.CAROUSEL:
                 // return cards back
                 let cards = $('.js-card-small.-selected');
                 // wish message
@@ -598,17 +542,16 @@ class App {
                 $('.js-card-open').removeClass('-out');
                 this.cursor.removeClass("close");
 
+                // how many cards are already open
+                let activeCards = $('.js-card-small.-opened').length + $('.js-card-small.-selected').length;
+
                 setTimeout(() => {
                     cards.removeClass('-selected').addClass('-opened');
                 }, 100);
 
-                // how many cards are already open
-                let activeCards = $('.js-card-small.-opened').length;
-
                 if (activeCards === 8) {
+                    $('.js-prediction-text').html('');
                     setTimeout(() => {
-                        $('.js-prediction-text').html('');
-
                         // if the wish message is not visible yet, we scroll down to it
                         if (!wishMessage.hasClass('-end-exp')) {
 
@@ -621,7 +564,7 @@ class App {
                             }, 200);
                         }
                     }, 100);
-                } else if (activeCards > 0) {
+                } else if (activeCards > 0 && activeCards <= 8) {
                     // get the next message and inject username
                     $('.js-prediction-text').html(this.impersonate(this.nextMessages[activeCards - 1]));
                 }
@@ -630,11 +573,8 @@ class App {
             case Stages.BODY_CARD:
                 $('.js-lottie').html('');
                 this.seekLottie(); // search for available looties
-
-                break
-
+                break;
         }
-
     }
 
     seekLottie() {
@@ -649,7 +589,6 @@ class App {
     }
 
     playSound(id, volume = 0.5) {
-
         this.audioID = id;
 
         if (this.muted) {
@@ -657,18 +596,12 @@ class App {
         }
 
         this.playing = true;
-
         let instance = createjs.Sound.createInstance(id);
-
-        instance.on("succeeded", () => {
-            this.musicButton.removeClass('-off');
-        });
-
+        instance.on("succeeded", () => this.musicButton.removeClass('-off'));
         instance.play({loop: -1, volume: volume});
     }
 
     playDistinctSound(id, volume = 0.5) {
-
         if (this.muted) {
             return
         }
@@ -678,7 +611,6 @@ class App {
     }
 
     toggleSound() {
-
         this.musicButton.toggleClass('-off');
         this.muted = !this.muted;
 
@@ -688,14 +620,12 @@ class App {
         } else if (this.audioID) {
             this.playSound(this.audioID);
         }
-
     }
 
     //
     // Lottie
 
     lottie(containah, pathu) {
-
         let loader = document.querySelector(containah);
 
         if (loader) {
@@ -710,18 +640,15 @@ class App {
             let loaderAnim;
             lottie.loadAnimation(loaderParams);
         }
-
     }
 
     attachEvents() {
-
         $('.js-predict').on('click touch', () => {
             this.username = $('.js-predict-username').val();
             this.moveToStage(Stages.MESSAGE);
         });
 
         $('.js-predict-username').on('keyup', (event) => {
-
             let inputElement = $('.js-predict-username');
 
             if (inputElement.val().length > 1) {
@@ -734,11 +661,9 @@ class App {
                 this.username = inputElement.val();
                 this.moveToStage(Stages.MESSAGE);
             }
-
         });
 
         $('.js-card-small').on('click touch', (event) => {
-
             $('.js-wish').removeClass('-end-exp');
             this.playDistinctSound(5);
 
@@ -749,7 +674,6 @@ class App {
                 element.addClass('-selected');
 
                 // Update Card Open
-
                 $('.js-lottie').attr('class', 'lottie js-lottie lottie-' + element.data('type'));
                 $('.js-lottie-bg').attr('class', 'orc-cardOpen__lottie js-lottie-bg bg-' + element.data('color'));
                 $('.js-cardOpen-icon').attr('class', 'orc-cardOpen__itemTop js-cardOpen-icon ' + element.data('icon'));
@@ -761,7 +685,6 @@ class App {
                 $('.js-cardOpen-image').attr('src', element.find('.js-card-image').attr('src'));
 
                 let link = element.find('.js-card-link').attr('href');
-
                 if (link) {
                     $('.js-cardOpen-link').attr('href', link).show();
                 } else {
@@ -773,32 +696,27 @@ class App {
                 // copy information
                 setTimeout(() => {
                     this.moveToStage(Stages.BODY_CARD)
-
                     setTimeout(() => {
                         $('.js-main-carousel').addClass('-opened');
                     }, 250);
-
                 }, 400);
-
             }
-
         });
 
         $('.js-what-button, .js-modal-close').on('click touch', (event) => {
+
             event.stopPropagation();
             event.preventDefault();
             // get the next message and inject username
-            $('.js-prediction-text').html(this.impersonate(this.nextMessages[activeCards - 1]));
+            // let activeCards = $('.js-card-small.-opened').length + $('.js-card-small.-selected').length;
+            // $('.js-prediction-text').html(this.impersonate(this.nextMessages[activeCards - 1]));
             $('.js-modal').toggleClass('-opened');
             $(document.body).toggleClass('modal-open');
         });
 
         $(document).on('click touch', () => {
-
             if (this.cursor.hasClass('close')) {
-
                 if (this.stage === Stages.BODY_CARD) {
-
                     $('.js-card-open').addClass('-out');
 
                     setTimeout(() => {
@@ -809,20 +727,15 @@ class App {
                     setTimeout(() => {
                         this.cursor.removeClass("close");
                     }, 650);
-
                 }
-
             }
-
         });
 
 
         $(document).on('keydown', (event) => {
-
             if (event.key === "Escape" && this.stage === Stages.BODY_CARD) {
-
                 // COPY PASTA - BERK, BUT I'M LAZY!!!!!
-
+                // you sure fucking are
                 $('.js-card-open').addClass('-out');
 
                 setTimeout(() => {
@@ -833,13 +746,10 @@ class App {
                 setTimeout(() => {
                     this.cursor.removeClass("close");
                 }, 650);
-
             }
-
         });
 
         // Sound
-
         this.musicButton.on('click touch', () => {
             this.toggleSound();
         });
@@ -847,7 +757,6 @@ class App {
         // Sharing
 
         $('.js-share').on('click touch', (event) => {
-
             event.stopPropagation();
             event.preventDefault();
 
@@ -858,15 +767,12 @@ class App {
             setTimeout(() => {
                 $('.js-clipboard').removeClass('-opened');
             }, 2000);
-
         });
-
     }
 
     impersonate(string) {
         return String(string).replace('{{USER_NAME}}', this.username);
     }
-
 }
 
 let app = new App();
