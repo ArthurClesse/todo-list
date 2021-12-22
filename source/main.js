@@ -87,7 +87,7 @@ class App {
             lottie: "lottie-object",
             options: [
                 {
-                    name: "Apart Socks",
+                    name: "Apaart Socks",
                     description: "The socks from your aunt were a great christmas gift but they won't last long in 2022. {{USER_NAME}}, before restocking the exact same socks as your colleagues, have a look at those crazy socks.",
                     image: "/Object/apart_socks.jpg",
                     link: "https://www.apaart.lu"
