@@ -65,6 +65,7 @@ $height: 1080px;
 //FONT
 $font-family-sans-serif:      		'relative-book-pro', Arial, sans-serif;
 $font-family-sans-serif-bold:     'relative-bold-pro', Arial, sans-serif;
+$font-family-sans-serif-medium:     'relative-medium-pro', Arial, sans-serif;
 
 $font-base: 18px;
 
@@ -481,7 +482,8 @@ P {
 
     &__logo {
 
-      font-family: $font-family-sans-serif-bold;
+      font-family: $font-family-sans-serif-medium;
+      font-weight: 700;
       font-size: 28px;
       mix-blend-mode: difference;
 
