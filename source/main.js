@@ -598,7 +598,9 @@ class App {
                 $('.js-card-open').removeClass('-out');
                 this.cursor.removeClass("close");
 
-                cards.removeClass('-selected').addClass('-opened');
+                setTimeout(() => {
+                    cards.removeClass('-selected').addClass('-opened');
+                }, 100);
 
                 // how many cards are already open
                 let activeCards = $('.js-card-small.-opened').length;
