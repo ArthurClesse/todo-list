@@ -648,7 +648,6 @@ class App {
     attachEvents() {
         $('.js-predict').on('click touch', () => {
             this.username = ' ' + $('.js-predict-username').val().replace(/(<([^>]+)>)/ig, "");
-            $('.js-username').text(this.username);
             this.moveToStage(Stages.MESSAGE);
         });
 
@@ -663,7 +662,6 @@ class App {
 
             if (event.key === "Enter" && !inputElement.hasClass('disabled')) {
                 this.username = ' ' + inputElement.val().replace(/(<([^>]+)>)/ig, "");
-                $('.js-username').text(this.username)
                 this.moveToStage(Stages.MESSAGE);
             }
         });
