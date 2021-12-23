@@ -549,7 +549,7 @@ class App {
                     cards.removeClass('-selected').addClass('-opened');
                 }, 100);
 
-                if (activeCards === 8) {
+                if (activeCards >= 8) {
                     $('.js-prediction-text').html('');
                     setTimeout(() => {
                         // if the wish message is not visible yet, we scroll down to it
@@ -564,7 +564,7 @@ class App {
                             }, 200);
                         }
                     }, 100);
-                } else if (activeCards > 0 && activeCards <= 8) {
+                } else if (activeCards > 0) {
                     // get the next message and inject username
                     $('.js-prediction-text').html(this.impersonate(this.nextMessages[activeCards - 1]));
                 }
@@ -644,7 +644,8 @@ class App {
 
     attachEvents() {
         $('.js-predict').on('click touch', () => {
-            this.username = $('.js-predict-username').val();
+            this.username = ' ' + $('.js-predict-username').val().replace(/(<([^>]+)>)/ig, "");
+            $('.js-username').text(this.username);
             this.moveToStage(Stages.MESSAGE);
         });
 
@@ -658,7 +659,8 @@ class App {
             }
 
             if (event.key === "Enter" && !inputElement.hasClass('disabled')) {
-                this.username = inputElement.val();
+                this.username = ' ' + inputElement.val().replace(/(<([^>]+)>)/ig, "");
+                $('.js-username').text(this.username)
                 this.moveToStage(Stages.MESSAGE);
             }
         });
@@ -753,16 +755,22 @@ class App {
 
         // Sharing
 
-        $('.js-share').on('click touch', (event) => {
+        let sharebutton = $('.js-share');
+        sharebutton.on('click touch', (event) => {
             event.stopPropagation();
             event.preventDefault();
 
             navigator.clipboard.writeText(location.origin);
 
+
+            sharebutton.text('The link to the oracle is copied to your clipboard. Share it whereever you want!');
+
+
             $('.js-clipboard').addClass('-opened');
 
             setTimeout(() => {
                 $('.js-clipboard').removeClass('-opened');
+            sharebutton.text('Spread the prophecy');
             }, 2000);
         });
     }
