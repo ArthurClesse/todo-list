@@ -387,6 +387,17 @@ $font-base: 18px;
 
 }
 
+* {
+
+  &::selection {
+
+    color: $black;
+    background-color: $white;
+
+  }
+
+}
+
 
 HTML, BODY {
   min-height: 100vh;
@@ -1275,6 +1286,22 @@ P {
 
       &.-info {
 
+        .orc-cardOpen__img img,
+        .orc-cardOpen__subTitle,
+        .orc-cardOpen__title,
+        .orc-cardOpen__text,
+        .orc-cardOpen__link {
+
+          &::selection {
+
+            color: $black;
+            background-color: $info-100;
+
+          }
+
+        }
+
+
         .orc-cardOpen__itemTop {
 
           background-color: $info-100;
@@ -1300,6 +1327,21 @@ P {
       }
 
       &.-error {
+
+        .orc-cardOpen__img img,
+        .orc-cardOpen__subTitle,
+        .orc-cardOpen__title,
+        .orc-cardOpen__text,
+        .orc-cardOpen__link {
+
+          &::selection {
+
+            color: $black;
+            background-color: $error-100;
+
+          }
+
+        }
 
         .orc-cardOpen__itemTop {
 
@@ -1327,6 +1369,21 @@ P {
 
       &.-success {
 
+        .orc-cardOpen__img img,
+        .orc-cardOpen__subTitle,
+        .orc-cardOpen__title,
+        .orc-cardOpen__text,
+        .orc-cardOpen__link {
+
+          &::selection {
+
+            color: $black;
+            background-color: $success-100;
+
+          }
+
+        }
+
         .orc-cardOpen__itemTop {
 
           background-color: $success-100;
@@ -1353,6 +1410,21 @@ P {
 
       &.-secondary {
 
+        .orc-cardOpen__img img,
+        .orc-cardOpen__subTitle,
+        .orc-cardOpen__title,
+        .orc-cardOpen__text,
+        .orc-cardOpen__link {
+
+          &::selection {
+
+            color: $black;
+            background-color: $secondary-100;
+
+          }
+
+        }
+
         .orc-cardOpen__itemTop {
 
           background-color: $secondary-100;
@@ -1378,6 +1450,21 @@ P {
       }
 
       &.-warning {
+
+        .orc-cardOpen__img img,
+        .orc-cardOpen__subTitle,
+        .orc-cardOpen__title,
+        .orc-cardOpen__text,
+        .orc-cardOpen__link {
+
+          &::selection {
+
+            color: $black;
+            background-color: $warning-100;
+
+          }
+
+        }
 
         .orc-cardOpen__itemTop {
 
