@@ -558,10 +558,13 @@ class App {
                             // show message
                             wishMessage.addClass('-end-exp');
 
-                            // animate scroll to bottom
-                            $([document.documentElement, document.body]).animate({
-                                scrollTop: wishMessage.offset().top
-                            }, 200);
+                            if (!this.hasScrolled){
+                                this.hasScrolled = true;
+                                // animate scroll to bottom
+                                $([document.documentElement, document.body]).animate({
+                                    scrollTop: wishMessage.offset().top
+                                }, 200);
+                            }
                         }
                     }, 100);
                 } else if (activeCards > 0) {
@@ -761,16 +764,16 @@ class App {
             event.preventDefault();
 
             navigator.clipboard.writeText(location.origin);
-
-
-            sharebutton.text('The link to the oracle is copied to your clipboard. Share it whereever you want!');
-
+            sharebutton.text('The link to the oracle is copied to your clipboard. Share it wherever you want!');
 
             $('.js-clipboard').addClass('-opened');
 
             setTimeout(() => {
                 $('.js-clipboard').removeClass('-opened');
-            sharebutton.text('Spread the prophecy');
+
+                setTimeout(() => {
+                    sharebutton.text('Spread the prophecy');
+                }, 2000);
             }, 2000);
         });
     }
