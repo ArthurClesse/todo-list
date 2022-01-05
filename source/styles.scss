@@ -1899,8 +1899,8 @@ P {
       display: block;
       position: absolute;
       top: -15px;
-      left: -40px;
-      transform: scale(0);
+      transform-origin: center center;
+      transform: scale(0) translate(-165px, -101px);
       animation: scaleStar .3s ease-out forwards;
       z-index: 200;
     }
@@ -2567,10 +2567,10 @@ P {
 
 @keyframes scaleStar {
   0%{
-    transform: scale(0);
+    transform: scale(0) translate(-165px, -101px);
   }
   100% {
-    transform: scale(1.1);
+    transform: scale(0.6) translate(-165px, -101px);
   }
 
 }
