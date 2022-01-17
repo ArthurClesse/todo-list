@@ -357,7 +357,7 @@ class App {
         modalContent.on('mouseover', () => this.cursor.addClass("dark"));
         modalContent.on('mouseleave', () => this.cursor.removeClass("dark"));
 
-        let baguetteThing = $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict, .js-share");
+        let baguetteThing = $(".js-what-button, .js-music, .js-cardOpen-link, .js-predict, .js-share, .orc-header__logo, .orc-header__by");
         baguetteThing.on('mouseover', () => this.cursor.addClass("baguette-small"));
         baguetteThing.on('mouseleave', () => this.cursor.removeClass("baguette-small"));
 
