@@ -53,7 +53,12 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            filename: 'index.html',
             template: './source/index.twig'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'about.html',
+            template: './source/pages/about.twig'
         }),
         new CopyPlugin({
             patterns: [

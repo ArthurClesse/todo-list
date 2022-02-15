@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
+{% extends 'layout/layout.twig' %}
 
-<body class="landing">
+{% block content %}
 
-<main>
+    {% include 'components/molecules/navigation.twig' %}
 
-    {% include 'partials/landing.twig' %}
+    <h1>Home</h1>
 
-</main>
-
-</body>
-</html>
+{% endblock %}
