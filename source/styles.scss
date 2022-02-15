@@ -1,5 +1,13 @@
-.title {
+//Styles
+//Base
+@import "assets/css/styles/base/base";
+//Pages
 
-  color: red;
+//Variables
+@import "assets/css/variables/colors";
 
-}
+//Components
+//Atoms
+//Molecules
+@import "assets/css/components/molecules/navigation";
+//Organisms

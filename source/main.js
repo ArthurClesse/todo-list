@@ -1,2 +1,2 @@
-// process styles
+// process css
 import "./styles.scss";
