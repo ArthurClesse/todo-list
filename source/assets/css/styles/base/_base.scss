@@ -1,11 +1,65 @@
 @import "../../variables/colors";
 BODY {
 
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Outfit', sans-serif;
+  background-color: $primary;
 
 }
 H1 {
 
   color: $primary;
+
+}
+.container {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+}
+.containerList {
+
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 56px;
+  background-color: white;
+  border-radius: 32px;
+  position: absolute;
+
+  .bullet {
+
+    display: flex;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+
+    &__icon {
+
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: white;
+      margin-right: 6px;
+
+    }
+    &__close {
+
+      background-color: #FE6158;
+
+    }
+    &__resize {
+
+      background-color: #FDBE30;
+
+    }
+    &__full {
+
+      background-color: #29C840;
+
+    }
+
+  }
 
 }

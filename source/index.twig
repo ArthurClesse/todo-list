@@ -2,8 +2,17 @@
 
 {% block content %}
 
-    {% include 'components/molecules/navigation.twig' %}
-
-    <h1>Home</h1>
+    <div class="container">
+        <div class="containerList">
+            <div class="bullet">
+                <span class="bullet__icon bullet__close"></span>
+                <span class="bullet__icon bullet__resize"></span>
+                <span class="bullet__icon bullet__full"></span>
+            </div>
+            {% include 'components/molecules/todo.twig' %}
+            {% include 'components/molecules/inprogress.twig' %}
+            {% include 'components/molecules/completed.twig' %}
+        </div>
+    </div>
 
 {% endblock %}
