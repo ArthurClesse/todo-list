@@ -2,10 +2,17 @@
 .todo {
 
   list-style: none;
-  padding: 32px;
+  padding: 32px 32px 16px 32px;
   border-radius: 16px;
-  background-color: $secondary;
+  background-color: #FCFBFF;
   margin-right: 32px;
+  overflow: hidden;
+
+  &::after {
+
+    content: '';
+
+  }
 
   &:last-child {
 
@@ -13,11 +20,78 @@
 
   }
 
+  &__header {
+    margin-bottom: 32px;
+    .todo__top {
+
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .icon {
+
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: $primary;
+
+        &.-progress {
+
+          background-color: $primary-30;
+
+        }
+        &.-completed {
+
+          background-color: $primary-50;
+
+        }
+
+        svg {
+
+          fill: white;
+
+        }
+
+      }
+
+      .todo__titleTop {
+        margin-left: 16px;
+
+        span {
+
+          font-weight: 400;
+          color: #3F6CDF;
+          font-size: 14px;
+
+        }
+      }
+
+    }
+    .todo__badges {
+
+      display: flex;
+      align-items: center;
+    }
+
+  }
+
   &__h2 {
 
-    margin-bottom: 16px;
-    margin-top: 0;
-    font-weight: 400;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-weight: 500;
+
+  }
+
+  .emoji {
+
+    display: block;
+    font-size: 48px;
+    margin-right: 16px;
 
   }
 
@@ -26,12 +100,71 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    margin-left: -16px;
+    margin-right: -16px;
 
   }
   &__content {
 
     display: flex;
     align-items: center;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 8px;
+
+  }
+  .badge {
+
+    padding: 2px 8px;
+    border-radius: 16px;
+    margin-right: 8px;
+    font-size: 14px;
+
+    &.-high {
+
+      background-color: $danger-10;
+      color: $danger-20;
+
+    }
+    &.-low {
+
+      background-color: $success-10;
+      color: $success-20;
+
+    }
+    &.-medium {
+
+      background-color: $warning-10;
+      color: $warning-20;
+
+    }
+
+  }
+  .bulletTask {
+
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    &.-high {
+
+      background-color: $danger-10;
+      color: $danger-20;
+
+    }
+    &.-low {
+
+      background-color: $success-10;
+      color: $success-20;
+
+    }
+    &.-medium {
+
+      background-color: $warning-10;
+      color: $warning-20;
+
+    }
 
   }
   &__el {
@@ -43,44 +176,14 @@
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    background-color: $primary-10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     &:hover {
 
-      background-color: rgba($primary, .4);
-
-      &::after {
-
-        content: '';
-        display: block;
-        opacity: .3;
-        position: absolute;
-        top: -2px;
-        left: 0;
-        filter: blur(30px);
-        width: 56px;
-        height: 56px;
-        background-color: $basic;
-        z-index: 0;
-
-      }
-
-    }
-    &.-low {
-
-      &::after {
-
-        background-color: $low;
-
-      }
-
-    }
-    &.-high {
-
-      &::after {
-
-        background-color: $high;
-
-      }
+      background-color: $primary-20;
 
     }
 
@@ -89,25 +192,9 @@
 
     height: 8px;
     width: 8px;
-    border: 2px solid $basic;
-    display: inline-block;
+    border: 2px solid;
     border-radius: 4px;
-
-    &.-low {
-
-      border-color: $low;
-
-    }
-    &.-high {
-
-      border-color: $high;
-
-    }
-
-  }
-  &__title {
-
-    margin-left: 16px;
+    display: none;
 
   }
 

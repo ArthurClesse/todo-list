@@ -1,17 +1,32 @@
 <div class="todo">
-    <h2 class="todo__h2">In progress</h2>
+    <div class="todo__header">
+        <div class="todo__top">
+            <div class="icon -progress">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M5 3v16h16v2H3V3h2zm15.293 3.293l1.414 1.414L16 13.414l-3-2.999-4.293 4.292-1.414-1.414L13 7.586l3 2.999 4.293-4.292z"/></svg>            </div>
+            <div class="todo__titleTop">
+                <h2 class="todo__h2">In progress</h2>
+                <span>2 tasks</span>
+            </div>
+        </div>
+        <div class="todo__badges">
+            <span class="badge -high">1 High</span>
+            <span class="badge -medium">1 Medium</span>
+        </div>
+    </div>
     <ul class="todo__list js-category">
         <li class="todo__el -low js-element">
             <div class="todo__content">
                 <span class="todo__priority -low"></span>
                 <span class="todo__title">Personnal</span>
             </div>
+            <span class="bulletTask -high"></span>
         </li>
         <li class="todo__el js-element">
             <div class="todo__content">
                 <span class="todo__priority"></span>
                 <span class="todo__title">Work</span>
             </div>
+            <span class="bulletTask -medium"></span>
         </li>
     </ul>
 </div>

@@ -3,15 +3,21 @@
 {% block content %}
 
     <div class="container">
-        <div class="containerList">
+        <div class="containerWindow">
             <div class="bullet">
                 <span class="bullet__icon bullet__close"></span>
                 <span class="bullet__icon bullet__resize"></span>
                 <span class="bullet__icon bullet__full"></span>
             </div>
-            {% include 'components/molecules/todo.twig' %}
-            {% include 'components/molecules/inprogress.twig' %}
-            {% include 'components/molecules/completed.twig' %}
+            <div class="header">
+                <h1>To do list</h1>
+                <span>10 tasks</span>
+            </div>
+            <div class="containerList">
+                {% include 'components/molecules/todo.twig' %}
+                {% include 'components/molecules/inprogress.twig' %}
+                {% include 'components/molecules/completed.twig' %}
+            </div>
         </div>
     </div>
 
