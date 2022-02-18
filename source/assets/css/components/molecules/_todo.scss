@@ -102,6 +102,7 @@
     padding: 0;
     margin-left: -16px;
     margin-right: -16px;
+    width: 282px;
 
   }
   &__content {
@@ -186,6 +187,15 @@
       background-color: $primary-20;
 
     }
+
+  }
+  &__dropBox {
+
+    height: 54px;
+    width: 100%;
+    border: 2px dashed $primary-20;
+    border-radius: 16px;
+    display: none;
 
   }
   &__priority {
